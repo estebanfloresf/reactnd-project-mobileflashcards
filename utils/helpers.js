@@ -17,6 +17,7 @@ export  function addDeck(title) {
          AsyncStorage.setItem('one', 'I like to save it.');
          AsyncStorage.setItem('two', 'I like to save it.');
          AsyncStorage.setItem('three', 'I like to save it.');
+         console.log('it worked');
     } catch (error) {
         console.log('There was an error: ',error);
     }

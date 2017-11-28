@@ -6,17 +6,22 @@ import {addDeck} from "../utils/helpers";
 
 class Decks extends Component {
 
+    componentDidMount(){
+
+    }
 
 
-    actionAddDeck = () =>{
+    actionAddDeck = ()=>{
+
         addDeck();
+
     };
 
     render() {
 
         return (
             <View style={styles.content}>
-                <TouchableOpacity onclick={this.actionAddDeck}>
+                <TouchableOpacity onPress={this.actionAddDeck}>
                     <Text>Add</Text>
                 </TouchableOpacity>
 
