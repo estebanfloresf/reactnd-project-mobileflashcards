@@ -1,26 +1,26 @@
 import React, {Component} from 'react';
-// import {Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text} from 'native-base';
-import {StyleSheet,ScrollView,View,Text,TouchableOpacity} from 'react-native';
-import {white, theme} from "../helpers/colors";
+import {StyleSheet,ScrollView,View,Text,TouchableOpacity,FlatList} from 'react-native';
+import {white, theme} from "../utils/colors";
+import {addDeck} from "../utils/helpers";
+
 
 class Decks extends Component {
-    state = {
-        decks: ['a', 'b', 'c']
+
+
+
+    actionAddDeck = () =>{
+        addDeck();
     };
 
     render() {
-        const {decks} = this.state;
+
         return (
             <View style={styles.content}>
-                <Text style={styles.content}>
-                    {decks.map((deck) => <Text  key={deck}>{deck}</Text>)}
-                </Text>
-                <TouchableOpacity style={styles.button} >
-
-                    <Text style={styles.textButton}>Add Deck</Text>
+                <TouchableOpacity onclick={this.actionAddDeck}>
+                    <Text>Add</Text>
                 </TouchableOpacity>
-                {/*<ScrollView contentContainerStyle={styles.contentContainer}>*/}
-                {/*</ScrollView>*/}
+
+
             </View>
         )
     }
@@ -28,7 +28,7 @@ class Decks extends Component {
 
 const styles = StyleSheet.create({
    content:{
-       flex: 1,
+       flex: 2,
        flexDirection: 'column',
        justifyContent: 'space-between',
        backgroundColor: theme.secondary,
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
    },
    button:{
        flex:1,
-       height:30,
+       height:20,
        width:300,
        paddingBottom: 2,
        paddingTop:2,

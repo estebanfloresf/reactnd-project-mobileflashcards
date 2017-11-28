@@ -13,6 +13,6 @@ export const theme = {
     text: '#27476e',
     info: '#eca400',
     warning: '#ec4e20',
-    secondary: '#00b1f6',
+    secondary: '#beebfc',
     primary: '#0b132b',
 };
