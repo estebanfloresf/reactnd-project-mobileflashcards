@@ -2,22 +2,23 @@ import {  AsyncStorage } from 'react-native'
 
 export async function getAllDecks() {
     try {
-        const value = await AsyncStorage.getA('@MySuperStore:key');
-        if (value !== null){
-            // We have data!!
-            console.log(value);
-        }
+        const value = await AsyncStorage.getAllKeys()
+            .then((keys)=>{console.log(keys)})
+
     } catch (error) {
         console.log('There was an error: ',error);
     }
 }
 
-export  function addDeck(title) {
+export  function addDeck(item) {
     try {
-         AsyncStorage.setItem('one', 'I like to save it.');
-         AsyncStorage.setItem('two', 'I like to save it.');
-         AsyncStorage.setItem('three', 'I like to save it.');
-         console.log('it worked');
+
+            const newDeck = item.trim().toLowerCase();
+
+
+         AsyncStorage.setItem(newDeck, 'I like to save it.');
+
+
     } catch (error) {
         console.log('There was an error: ',error);
     }
