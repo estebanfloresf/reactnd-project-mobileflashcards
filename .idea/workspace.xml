@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c2ef57a8-7d06-49e4-b9e0-12ceb73c3713" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App.js" afterPath="$PROJECT_DIR$/App.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/Decks.js" afterPath="$PROJECT_DIR$/components/Decks.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/utils/helpers.js" afterPath="$PROJECT_DIR$/utils/helpers.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -26,6 +23,17 @@
               <caret line="32" column="38" lean-forward="false" selection-start-line="32" selection-start-column="38" selection-end-line="32" selection-end-column="38" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
+                <marker date="1511925128000" expanded="true" signature="1770:1810" ph="&lt;TouchableOpacity/&gt;" />
+                <marker date="1511925128000" expanded="true" signature="1770:1834" ph="&lt;View/&gt;" />
+                <marker date="1511925128000" expanded="true" signature="1770:1855" ph="&lt;View/&gt;" />
+                <marker date="1511925128000" expanded="true" signature="1770:1871" ph="{...}" />
+                <marker date="1511925128000" expanded="true" signature="1770:1873" ph="{...}" />
+                <marker date="1511925128000" expanded="true" signature="1908:2741" ph="{...}" />
+                <marker date="1511925128000" expanded="true" signature="1923:2087" ph="{&quot;flexDirection&quot;: 'column'...}" />
+                <marker date="1511925128000" expanded="true" signature="2104:2221" ph="{&quot;justifyContent&quot;: 'center'...}" />
+                <marker date="1511925128000" expanded="true" signature="2239:2327" ph="{&quot;justifyContent&quot;: 'center'...}" />
+                <marker date="1511925128000" expanded="true" signature="2342:2585" ph="{&quot;backgroundColor&quot;: theme.primary...}" />
+                <marker date="1511925128000" expanded="true" signature="2603:2739" ph="{&quot;color&quot;: theme.info...}" />
               </folding>
             </state>
           </provider>
@@ -61,7 +69,13 @@
     </replaceStrings>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Esteban &lt;esteban_fs@hotmail.com&gt;" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="SIGN_OFF_COMMIT" value="true" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -344,15 +358,21 @@
       <option name="project" value="LOCAL" />
       <updated>1511752677578</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Helpers functions ready">
+      <created>1511925114486</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1511925114486</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17354000" />
+    <option name="totallyTimeSpent" value="17429000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="728" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -361,7 +381,7 @@
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25762194" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25762194" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -382,7 +402,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First COmmits" />
     <MESSAGE value="Design Phase" />
-    <option name="LAST_COMMIT_MESSAGE" value="Design Phase" />
+    <MESSAGE value="Helpers functions ready" />
+    <option name="LAST_COMMIT_MESSAGE" value="Helpers functions ready" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -439,6 +460,17 @@
           <caret line="20" column="35" lean-forward="false" selection-start-line="20" selection-start-column="35" selection-end-line="20" selection-end-column="35" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
+            <marker date="1511925128000" expanded="true" signature="1770:1810" ph="&lt;TouchableOpacity/&gt;" />
+            <marker date="1511925128000" expanded="true" signature="1770:1834" ph="&lt;View/&gt;" />
+            <marker date="1511925128000" expanded="true" signature="1770:1855" ph="&lt;View/&gt;" />
+            <marker date="1511925128000" expanded="true" signature="1770:1871" ph="{...}" />
+            <marker date="1511925128000" expanded="true" signature="1770:1873" ph="{...}" />
+            <marker date="1511925128000" expanded="true" signature="1908:2741" ph="{...}" />
+            <marker date="1511925128000" expanded="true" signature="1923:2087" ph="{&quot;flexDirection&quot;: 'column'...}" />
+            <marker date="1511925128000" expanded="true" signature="2104:2221" ph="{&quot;justifyContent&quot;: 'center'...}" />
+            <marker date="1511925128000" expanded="true" signature="2239:2327" ph="{&quot;justifyContent&quot;: 'center'...}" />
+            <marker date="1511925128000" expanded="true" signature="2342:2585" ph="{&quot;backgroundColor&quot;: theme.primary...}" />
+            <marker date="1511925128000" expanded="true" signature="2603:2739" ph="{&quot;color&quot;: theme.info...}" />
           </folding>
         </state>
       </provider>
@@ -556,6 +588,17 @@
           <caret line="25" column="35" lean-forward="true" selection-start-line="25" selection-start-column="35" selection-end-line="25" selection-end-column="35" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
+            <marker date="1511925128000" expanded="true" signature="1770:1810" ph="&lt;TouchableOpacity/&gt;" />
+            <marker date="1511925128000" expanded="true" signature="1770:1834" ph="&lt;View/&gt;" />
+            <marker date="1511925128000" expanded="true" signature="1770:1855" ph="&lt;View/&gt;" />
+            <marker date="1511925128000" expanded="true" signature="1770:1871" ph="{...}" />
+            <marker date="1511925128000" expanded="true" signature="1770:1873" ph="{...}" />
+            <marker date="1511925128000" expanded="true" signature="1908:2741" ph="{...}" />
+            <marker date="1511925128000" expanded="true" signature="1923:2087" ph="{&quot;flexDirection&quot;: 'column'...}" />
+            <marker date="1511925128000" expanded="true" signature="2104:2221" ph="{&quot;justifyContent&quot;: 'center'...}" />
+            <marker date="1511925128000" expanded="true" signature="2239:2327" ph="{&quot;justifyContent&quot;: 'center'...}" />
+            <marker date="1511925128000" expanded="true" signature="2342:2585" ph="{&quot;backgroundColor&quot;: theme.primary...}" />
+            <marker date="1511925128000" expanded="true" signature="2603:2739" ph="{&quot;color&quot;: theme.info...}" />
           </folding>
         </state>
       </provider>
@@ -628,6 +671,17 @@
           <caret line="20" column="35" lean-forward="false" selection-start-line="20" selection-start-column="35" selection-end-line="20" selection-end-column="35" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
+            <marker date="1511925128000" expanded="true" signature="1770:1810" ph="&lt;TouchableOpacity/&gt;" />
+            <marker date="1511925128000" expanded="true" signature="1770:1834" ph="&lt;View/&gt;" />
+            <marker date="1511925128000" expanded="true" signature="1770:1855" ph="&lt;View/&gt;" />
+            <marker date="1511925128000" expanded="true" signature="1770:1871" ph="{...}" />
+            <marker date="1511925128000" expanded="true" signature="1770:1873" ph="{...}" />
+            <marker date="1511925128000" expanded="true" signature="1908:2741" ph="{...}" />
+            <marker date="1511925128000" expanded="true" signature="1923:2087" ph="{&quot;flexDirection&quot;: 'column'...}" />
+            <marker date="1511925128000" expanded="true" signature="2104:2221" ph="{&quot;justifyContent&quot;: 'center'...}" />
+            <marker date="1511925128000" expanded="true" signature="2239:2327" ph="{&quot;justifyContent&quot;: 'center'...}" />
+            <marker date="1511925128000" expanded="true" signature="2342:2585" ph="{&quot;backgroundColor&quot;: theme.primary...}" />
+            <marker date="1511925128000" expanded="true" signature="2603:2739" ph="{&quot;color&quot;: theme.info...}" />
           </folding>
         </state>
       </provider>
@@ -746,6 +800,17 @@
           <caret line="32" column="38" lean-forward="false" selection-start-line="32" selection-start-column="38" selection-end-line="32" selection-end-column="38" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
+            <marker date="1511925128000" expanded="true" signature="1770:1810" ph="&lt;TouchableOpacity/&gt;" />
+            <marker date="1511925128000" expanded="true" signature="1770:1834" ph="&lt;View/&gt;" />
+            <marker date="1511925128000" expanded="true" signature="1770:1855" ph="&lt;View/&gt;" />
+            <marker date="1511925128000" expanded="true" signature="1770:1871" ph="{...}" />
+            <marker date="1511925128000" expanded="true" signature="1770:1873" ph="{...}" />
+            <marker date="1511925128000" expanded="true" signature="1908:2741" ph="{...}" />
+            <marker date="1511925128000" expanded="true" signature="1923:2087" ph="{&quot;flexDirection&quot;: 'column'...}" />
+            <marker date="1511925128000" expanded="true" signature="2104:2221" ph="{&quot;justifyContent&quot;: 'center'...}" />
+            <marker date="1511925128000" expanded="true" signature="2239:2327" ph="{&quot;justifyContent&quot;: 'center'...}" />
+            <marker date="1511925128000" expanded="true" signature="2342:2585" ph="{&quot;backgroundColor&quot;: theme.primary...}" />
+            <marker date="1511925128000" expanded="true" signature="2603:2739" ph="{&quot;color&quot;: theme.info...}" />
           </folding>
         </state>
       </provider>
