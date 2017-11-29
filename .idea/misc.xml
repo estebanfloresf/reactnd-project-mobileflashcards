@@ -3,4 +3,7 @@
   <component name="JavaScriptSettings">
     <option name="languageLevel" value="FLOW" />
   </component>
+  <component name="UnicodeBrowser">
+    <option name="fontName" value="Consolas" />
+  </component>
 </project>
