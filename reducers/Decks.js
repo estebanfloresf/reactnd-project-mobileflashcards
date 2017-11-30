@@ -1,12 +1,13 @@
 import {ADD_DECK, GET_DECKS_FAIL, GET_DECKS_SUCCESS, GET_DECKS_FETCHING} from "../actions/index";
 
 const initialState = {
-    data: [],
+
     deckFetching: false,
     deckError: false
 };
 
 export function decksReducer(state = initialState, action) {
+
     switch (action.type) {
         case GET_DECKS_FETCHING:
             return {
@@ -16,7 +17,7 @@ export function decksReducer(state = initialState, action) {
         case GET_DECKS_SUCCESS:
             return {
                 ...state,
-                data: action.decks,
+                ...action.decks,
                 deckFetching: false,
             };
         case GET_DECKS_FAIL:

@@ -32,22 +32,26 @@ export function getDecksFail() {
     }
 }
 
-//Get data
 
+//Get data
 export function fetchDecks() {
     return (dispatch) => {
         dispatch(getDecksData());
         getDecks()
+
             .then((decks) => {
-console.log(decks);
-                dispatch(getDecksSuccess(decks))
-            })
-            .catch(
-                console.log('Error getting the decks'),
-                dispatch(getDecksFail)
+                    console.log(decks);
+                    dispatch(getDecksSuccess(decks))
+                }
+            )
+            .catch((error) => {
+
+                    console.log('Error getting the decks ' + error);
+                    dispatch(getDecksFail)
+                }
             )
 
 
-    }
+    };
 }
 

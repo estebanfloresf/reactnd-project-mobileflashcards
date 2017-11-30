@@ -3,16 +3,30 @@ import {StyleSheet, View, Text, TouchableOpacity, FlatList, TextInput, ScrollVie
 import {white, theme} from "../utils/colors";
 
 import {fetchDecks} from '../actions/index';
-import { connect } from 'react-redux';
-
+import {connect} from 'react-redux';
 
 
 class Decks extends Component {
 
-    state = {text: 'Title Deck'};
+    state = {
+        text: 'Title Deck',
+        decks: []
+    };
 
     componentDidMount() {
-       this.props.fetchDecks();
+        this.props.fetchDecks();
+        this.setState(()=>{
+          decks: this.props.decks
+        })
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        // only update chart if the data has changed
+        if (prevProps.data !== this.props.data) {
+            this.chart = c3.load({
+                data: this.props.data
+            });
+        }
     }
 
 
@@ -38,15 +52,15 @@ class Decks extends Component {
     //
     // } ;
     render() {
-        const {decks,deckFetching,deckFail} = this.props;
-        console.log(deckFetching);
+        const {decks, deckFetching, deckFail} = this.props;
+        console.log(decks);
         return (
             <View style={styles.content}>
 
                 {
-                    deckFetching? <Text>Loading..</Text>
-                        : deckFail? <Text>Error loading the decks</Text>
-                        :  <View><Text>OOk</Text></View>
+                    deckFetching ? <Text>Loading..</Text>
+                        : deckFail ? <Text>Error loading the decks</Text>
+                        : <View><Text>OOk</Text></View>
 
                 }
 
@@ -56,21 +70,19 @@ class Decks extends Component {
     }
 }
 
-function mapStateToProps (state) {
-    console.log(state.data);
-    return {
-        decks: state.data,
-        deckFetching: state.deckFetching,
+function mapStateToProps(state) {
 
-        deckFail : state.deckFail
+    return {
+        decks: state.decks,
+        deckFetching: state.deckFetching,
+        deckFail: state.deckFail
     }
 }
 
 
-
 const mapDispatchToProps = {
 
-   fetchDecks
+    fetchDecks
 
 };
 
@@ -84,7 +96,7 @@ const styles = StyleSheet.create({
 
     },
     container: {
-        flex:5,
+        flex: 5,
         justifyContent: 'center',
         margin: 5,
         padding: 2,
@@ -92,8 +104,8 @@ const styles = StyleSheet.create({
 
 
     },
-    buttonGroup:{
-        flex:1,
+    buttonGroup: {
+        flex: 1,
         justifyContent: 'center',
         flexDirection: 'row',
 

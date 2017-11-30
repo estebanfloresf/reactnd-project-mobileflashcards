@@ -1,8 +1,8 @@
 import {AsyncStorage} from 'react-native'
 
-export async function getDecks() {
+export  function getDecks() {
 
-    return await AsyncStorage.getAllKeys()
+    return  AsyncStorage.getAllKeys()
         .then((decks) => {
 
             return decks
