@@ -1,83 +1,95 @@
 import React, {Component} from 'react';
-import {StyleSheet, ScrollView, View, Text, TouchableOpacity, FlatList, TextInput} from 'react-native';
+import {StyleSheet, View, Text, TouchableOpacity, FlatList, TextInput, ScrollView} from 'react-native';
 import {white, theme} from "../utils/colors";
-import {saveDeckTitle, getDecks,getDeck,addCardToDeck} from "../utils/helpers";
+
+import {fetchDecks} from '../actions/index';
+import { connect } from 'react-redux';
+
 
 
 class Decks extends Component {
 
-    state = {text: 'Useless Placeholder'};
+    state = {text: 'Title Deck'};
 
     componentDidMount() {
-
+       this.props.fetchDecks();
     }
 
 
-    actionAddDeck = () => {
-
-        saveDeckTitle(this.state.text);
-
-    };
-
-    actionGetDecks = () => {
-
-        getDecks();
-    };
-
-    actionGetSingleDeck = () => {
-
-        getDeck(this.state.text);
-    };
-
-    actionAddCardDeck = () => {
-       addCardToDeck(this.state.text,{});
-
-    } ;
-
+    // actionAddDeck = () => {
+    //
+    //     saveDeckTitle(this.state.text);
+    //
+    // };
+    //
+    // actionGetDecks = () => {
+    //
+    //     getDecks();
+    // };
+    //
+    // actionGetSingleDeck = () => {
+    //
+    //     getDeck(this.state.text);
+    // };
+    //
+    // actionAddCardDeck = () => {
+    //    addCardToDeck(this.state.text,{});
+    //
+    //
+    // } ;
     render() {
-
+        const {decks,deckFetching,deckFail} = this.props;
+        console.log(deckFetching);
         return (
             <View style={styles.content}>
-                <View style={styles.container}>
-                    <TextInput
-                        style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-                        onChangeText={(text) => this.setState({text})}
-                        onFocus= {() => this.setState({text : ''})}
-                        value={this.state.text}
-                    />
-                </View>
-                <View style={styles.buttonGroup}>
-                    <TouchableOpacity onPress={this.actionAddDeck} style={styles.button}>
-                        <Text style={styles.textButton}>Add Deck</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={this.actionGetDecks} style={styles.button}>
-                        <Text style={styles.textButton}>Get Decks</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={this.actionAddCardDeck} style={styles.button}>
-                        <Text style={styles.textButton}>Single</Text>
-                    </TouchableOpacity>
-                </View>
+
+                {
+                    deckFetching? <Text>Loading..</Text>
+                        : deckFail? <Text>Error loading the decks</Text>
+                        :  <View><Text>OOk</Text></View>
+
+                }
+
 
             </View>
         )
     }
 }
 
+function mapStateToProps (state) {
+    console.log(state.data);
+    return {
+        decks: state.data,
+        deckFetching: state.deckFetching,
+
+        deckFail : state.deckFail
+    }
+}
+
+
+
+const mapDispatchToProps = {
+
+   fetchDecks
+
+};
+
 const styles = StyleSheet.create({
     content: {
         flex: 1,
-        flexDirection: 'column',
+        // flexDirection: 'column',
         backgroundColor: theme.secondary,
         alignItems: 'center',
         justifyContent: 'center',
 
     },
     container: {
-        flex:3,
+        flex:5,
         justifyContent: 'center',
         margin: 5,
         padding: 2,
-        width: 300,
+        width: 300
+
 
     },
     buttonGroup:{
@@ -89,8 +101,6 @@ const styles = StyleSheet.create({
 
     button: {
         flex: 1,
-
-
         padding: 2,
         margin: 2,
         backgroundColor: theme.primary,
@@ -111,4 +121,7 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Decks;
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Decks);

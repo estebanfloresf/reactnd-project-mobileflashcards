@@ -3,8 +3,9 @@ import {AsyncStorage} from 'react-native'
 export async function getDecks() {
 
     return await AsyncStorage.getAllKeys()
-        .then((keys) => {
-            return keys
+        .then((decks) => {
+
+            return decks
         })
         .catch(() => {
             return 'Error getting the Decks'
@@ -26,8 +27,8 @@ export async function saveDeckTitle(title) {
 
     // We saved at AsyncStorage, if successful return true
     return await AsyncStorage.setItem(key, JSON.stringify(newDeck))
-        .then(() => {
-            return true
+        .then((deck) => {
+            return deck
         })
         .catch(() => {
             console.log('There was an error saving the deck '+title);
@@ -47,6 +48,7 @@ export async function getDeck(title) {
             return false
         });
 }
+
 
 
 export async function addCardToDeck(title,card) {
