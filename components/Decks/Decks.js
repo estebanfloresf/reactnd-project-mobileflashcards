@@ -5,32 +5,47 @@ import {
     Text,
     TouchableOpacity,
     FlatList,
-    TextInput,
-    ScrollView,
-    ListView,
-    SectionList
+
 } from 'react-native';
-import {white, theme} from "../utils/colors";
-import {fetchDecks} from '../actions/index';
+import {white, theme} from "../../utils/colors";
+import {fetchDecks} from '../../actions/index';
 import {connect} from 'react-redux';
+import Swipeout from 'react-native-swipeout';
 
 
 class Decks extends Component {
 
     state = {
         text: 'Title Deck',
-        decks: []
+        decks: [],
+        deckToDelete : null,
     };
 
     componentDidMount() {
         this.props.fetchDecks();
     }
 
-    _onPress = () => {
-        console.log("Hey");
+    _onPress = (title) => {
+        console.log("go to deck"+title);
+        this.setState({
+            deckToDelete: title
+        })
     };
+    _deleteDeck = () => {
+        console.log("delete"+ item);
+
+    };
+
     render() {
         const {decks, deckFetching, deckFail} = this.props;
+        const swipeBtns = [{
+            text: 'Delete',
+            backgroundColor: 'red',
+            underlayColor: '#ff1722',
+            onPress: () => {
+                this._deleteDeck()
+            }
+        }];
 
         return (
             <View style={styles.content}>
@@ -43,14 +58,28 @@ class Decks extends Component {
                             :
                             <FlatList
                                 data={decks}
-                                keyExtractor ={ item => item.title }
+                                keyExtractor={(item, index) => index}
                                 renderItem={({item}) =>
-                                    <TouchableOpacity key={item.title} style={styles.cards} onPress={this._onPress}>
+
+                                    <Swipeout right={swipeBtns}
+                                              autoClose={true}
+                                              backgroundColor='transparent'>
+
+                                        <TouchableOpacity style={styles.cards} onPress={this._onPress(item.title)}>
+                                            <View>
+                                                <View>
+                                                    <Text style={{color: white, fontSize: 30}}>{item.title}</Text>
+                                                </View>
+                                                <View>
+                                                    <Text style={{color: white, fontSize: 10}}>{item.questions.length}
+                                                        cards</Text>
+                                                </View>
+                                            </View>
 
 
-                                            <Text style={{color: white, fontSize: 30}}>{item.title}</Text>
-
-                                    </TouchableOpacity>}
+                                        </TouchableOpacity>
+                                    </Swipeout>
+                                }
                             />
 
                 }
@@ -116,11 +145,11 @@ const styles = StyleSheet.create({
         backgroundColor: theme.primary,
 
         flex: 3,
-        borderRadius: 2,
+        borderRadius: 5,
         justifyContent: 'center',
         alignItems: 'flex-start',
         width: 300,
-        height: 300,
+        height: 150,
         margin: 6,
         padding: 2
     }

@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View, StatusBar} from 'react-native';
 import {Constants} from 'expo';
-import Decks from './components/Decks';
+import Decks from './components/Decks/Decks';
 import {theme} from "./utils/colors";
 import {Provider} from 'react-redux';
 import {createStore, applyMiddleware,compose} from 'redux';
@@ -9,7 +9,7 @@ import reducer from './reducers';
 import thunk from 'redux-thunk';
 import { TabNavigator , StackNavigator} from 'react-navigation';
 import { FontAwesome, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'
-import AddDeck from './components/AddDeck';
+import AddDeck from './components/Decks/AddDeck';
 
 
 

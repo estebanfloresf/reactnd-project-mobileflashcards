@@ -1,9 +1,20 @@
-import {ADD_DECK, GET_DECKS_FAIL, GET_DECKS_SUCCESS, GET_DECKS_FETCHING} from "../actions/index";
+import {
+    ADD_DECK_FAIL,
+    ADD_DECK_SUCCESS,
+    ADD_DECK_FETCHING,
+    GET_DECKS_FAIL,
+    GET_DECKS_SUCCESS,
+    GET_DECKS_FETCHING
+} from "../actions/index";
+
 
 const initialState = {
     decks: [],
     deckFetching: false,
-    deckError: false
+    deckError: false,
+    addDeckFetching: false,
+    addDeckError: false,
+    addDeckSuccess: false,
 };
 
 export function decksReducer(state = initialState, action) {
@@ -26,11 +37,25 @@ export function decksReducer(state = initialState, action) {
                 deckFetching: false,
                 deckError: true
             };
-        case ADD_DECK:
+        case ADD_DECK_FETCHING:
             return {
                 ...state,
-                ...action.deck
+                addDeckFetching: true,
             };
+        case ADD_DECK_SUCCESS:
+            return {
+                ...state,
+                decks: [...state.decks, {'title': action.deckTitle}],
+                addDeckFetching: false,
+                addDeckSuccess: true,
+            };
+        case ADD_DECK_FAIL:
+            return{
+                ...state,
+                addDeckFetching: false,
+                addDeckError: true,
+            };
+
         default:
             return state;
     }

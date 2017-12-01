@@ -1,17 +1,12 @@
-import {getDecks} from '../utils/helpers';
+import {getDecks, saveDeckTitle} from '../utils/helpers';
 
-export const ADD_DECK = 'ADD_DECK';
+export const ADD_DECK_SUCCESS = 'ADD_DECK_SUCCESS';
+export const ADD_DECK_FETCHING = 'ADD_DECK_FETCHING';
+export const ADD_DECK_FAIL = 'ADD_DECK_FAIL';
 export const GET_DECKS_FETCHING = 'GET_DECKS_FETCHING';
 export const GET_DECKS_SUCCESS = 'GET_DECKS_SUCCESS';
 export const GET_DECKS_FAIL = 'GET_DECKS_FAIL';
 
-
-export function addDeck(deck) {
-    return {
-        type: ADD_DECK,
-        deck
-    }
-}
 
 export function getDecksData() {
     return {
@@ -20,7 +15,7 @@ export function getDecksData() {
 }
 
 export function getDecksSuccess(decks) {
-    console.log(decks);
+
     return {
         type: GET_DECKS_SUCCESS,
         decks
@@ -33,6 +28,25 @@ export function getDecksFail() {
     }
 }
 
+
+export function addDeckData() {
+    return {
+        type: ADD_DECK_FETCHING
+    }
+}
+
+export function addDeckSuccess(deckTitle) {
+    return {
+        type: ADD_DECK_SUCCESS,
+        deckTitle
+    }
+}
+
+export function addDeckFail() {
+    return {
+        type: ADD_DECK_FAIL
+    }
+}
 
 //Get data
 export function fetchDecks() {
@@ -56,3 +70,26 @@ export function fetchDecks() {
     };
 }
 
+//Add Deck
+
+export function addDeck(title) {
+
+    return (dispatch) => {
+        dispatch(addDeckData());
+        saveDeckTitle(title)
+
+
+            .then((deck) => {
+                    dispatch(addDeckSuccess(deck))
+                }
+            )
+            .catch((error) => {
+
+                    console.log('Error saving the decks ' + error);
+                    dispatch(addDeckFail())
+                }
+            )
+
+
+    };
+}

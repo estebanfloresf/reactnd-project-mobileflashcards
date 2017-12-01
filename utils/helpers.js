@@ -1,14 +1,23 @@
 import {AsyncStorage} from 'react-native'
 
-export  function getDecks() {
+export function getDecks() {
 
-    return  AsyncStorage.getAllKeys()
+    return AsyncStorage.getAllKeys()
         .then((decks) => {
             const newArray = [];
-            for(var i=0;i<decks.length; i++){
-                newArray[i] = {
-                    title: decks[i]
-                }
+            for (var i = 0; i < decks.length; i++) {
+
+                const deck =   AsyncStorage.getItem(decks[i])
+                    .then(JSON.parse)
+                    .then((deck) => {
+                       newArray.push(deck);
+                        return deck
+                    })
+                    .catch((error) => {
+                        console.log('There was an error getting the deck ' + error);
+                        return false
+                    });
+
             }
 
 
@@ -32,16 +41,22 @@ export async function saveDeckTitle(title) {
         questions
     };
 
+
     // We saved at AsyncStorage, if successful return true
-    return await AsyncStorage.setItem(key, JSON.stringify(newDeck))
+    AsyncStorage.setItem(key, JSON.stringify(newDeck));
+
+
+    return await AsyncStorage.getItem(key)
+        .then(JSON.parse)
         .then((deck) => {
-            return deck
+
+            return deck.title
         })
         .catch(() => {
-            console.log('There was an error saving the deck '+title);
+            console.log('There was an error saving the deck ' + title);
             return false
         });
-    
+
 }
 
 export async function getDeck(title) {
@@ -51,14 +66,13 @@ export async function getDeck(title) {
             return deck
         })
         .catch(() => {
-            console.log('There was an error getting the deck '+title);
+            console.log('There was an error getting the deck ' + title);
             return false
         });
 }
 
 
-
-export async function addCardToDeck(title,card) {
+export async function addCardToDeck(title, card) {
 
     card = {
         question: 'test question',
@@ -72,6 +86,6 @@ export async function addCardToDeck(title,card) {
             return deck
         })
         .catch(() => {
-            return 'Error adding the card '+ card+' to the deck ' + title
+            return 'Error adding the card ' + card + ' to the deck ' + title
         });
 }
