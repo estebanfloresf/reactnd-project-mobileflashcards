@@ -26,28 +26,9 @@ class Decks extends Component {
         this.props.fetchDecks();
     }
 
-
-    // actionAddDeck = () => {
-    //
-    //     saveDeckTitle(this.state.text);
-    //
-    // };
-    //
-    // actionGetDecks = () => {
-    //
-    //     getDecks();
-    // };
-    //
-    // actionGetSingleDeck = () => {
-    //
-    //     getDeck(this.state.text);
-    // };
-    //
-    // actionAddCardDeck = () => {
-    //    addCardToDeck(this.state.text,{});
-    //
-    //
-    // } ;
+    _onPress = () => {
+        console.log("Hey");
+    };
     render() {
         const {decks, deckFetching, deckFail} = this.props;
 
@@ -55,16 +36,21 @@ class Decks extends Component {
             <View style={styles.content}>
 
                 {
-                    deckFetching ? <Text>Loading...</Text>
-                        : deckFail ? <Text>Sorry we couldn't get your decks</Text>
+                    deckFetching ? <Text style={{color: theme.info, fontSize: 50}}>Loading...</Text>
+                        : deckFail ?
+                        <Text style={{color: theme.warning, fontSize: 50}}>Sorry we couldn't get your decks</Text>
                         : decks.length < 0 ? <Text>It looks you haven't add any decks yet =)</Text>
                             :
                             <FlatList
                                 data={decks}
+                                keyExtractor ={ item => item.title }
                                 renderItem={({item}) =>
-                                    <View key={item.title} style={styles.cards}>
-                                        <Text style={{color:white, fontSize: 30}}>{item.title}</Text>
-                                    </View>}
+                                    <TouchableOpacity key={item.title} style={styles.cards} onPress={this._onPress}>
+
+
+                                            <Text style={{color: white, fontSize: 30}}>{item.title}</Text>
+
+                                    </TouchableOpacity>}
                             />
 
                 }
@@ -126,17 +112,17 @@ const styles = StyleSheet.create({
         padding: 4,
     },
 
-    cards:{
+    cards: {
         backgroundColor: theme.primary,
 
-        flex:3,
+        flex: 3,
         borderRadius: 2,
         justifyContent: 'center',
         alignItems: 'flex-start',
-width:300,
+        width: 300,
         height: 300,
-        margin: 2,
-        padding:2
+        margin: 6,
+        padding: 2
     }
 });
 

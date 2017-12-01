@@ -7,12 +7,11 @@ import {Provider} from 'react-redux';
 import {createStore, applyMiddleware,compose} from 'redux';
 import reducer from './reducers';
 import thunk from 'redux-thunk';
-import { TabNavigator } from 'react-navigation';
+import { TabNavigator , StackNavigator} from 'react-navigation';
 import { FontAwesome, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'
-
-
-
 import AddDeck from './components/AddDeck';
+
+
 
 const logger = store => next => action => {
     console.group(action.type);
@@ -36,6 +35,7 @@ const Tabs = TabNavigator({
     Decks: {
         screen: Decks,
         navigationOptions:{
+            title: 'Decks',
             tabBarLabel: 'View Decks',
             tabBarIcon: ({ tintColor }) => <MaterialCommunityIcons name='cards' size={30} color={tintColor} />
         }
@@ -43,12 +43,13 @@ const Tabs = TabNavigator({
     AddDeck: {
         screen: AddDeck,
         navigationOptions:{
+            title: 'Add Deck',
             tabBarLabel: 'Add Deck',
             tabBarIcon: ({ tintColor }) => <Ionicons name='ios-add' size={30} color={tintColor} />
 
         }
     },
-},{
+} , {
 
     tabBarOptions: {
         activeTintColor: theme.secondary,
@@ -58,6 +59,32 @@ const Tabs = TabNavigator({
         style: {
             backgroundColor: theme.primary,
         },
+    }
+});
+
+
+const MainNavigator = StackNavigator({
+    Home: {
+        screen: Tabs,
+        navigationOptions:{
+            // title: 'Decks',
+            headerTintColor:theme.secondary,
+            headerStyle: {
+                // fontSize: 14,
+                backgroundColor: theme.primary,
+            },
+        },
+    },
+    AddDeck: {
+        screen: AddDeck,
+        navigationOptions: {
+            title: 'Add Deck',
+            headerTintColor:theme.secondary,
+            headerStyle: {
+                // fontSize: 14,
+                backgroundColor: theme.primary,
+            },
+        }
     }
 });
 
@@ -79,7 +106,7 @@ export default class App extends React.Component {
             <Provider store={store}>
                 <View style={{flex: 1}}>
                     <StatusBarCards backgroundColor={theme.primary} barStyle='light-content'/>
-                    <Tabs/>
+                    <MainNavigator/>
                 </View>
             </Provider>
 
