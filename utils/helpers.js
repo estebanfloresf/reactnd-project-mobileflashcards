@@ -4,8 +4,15 @@ export  function getDecks() {
 
     return  AsyncStorage.getAllKeys()
         .then((decks) => {
+            const newArray = [];
+            for(var i=0;i<decks.length; i++){
+                newArray[i] = {
+                    title: decks[i]
+                }
+            }
 
-            return decks
+
+            return newArray
         })
         .catch(() => {
             return 'Error getting the Decks'
