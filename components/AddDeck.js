@@ -1,26 +1,38 @@
 import React, {Component} from 'react';
 import {StyleSheet, ScrollView, View, Text, TouchableOpacity, FlatList, TextInput} from 'react-native';
 import {white, theme} from "../utils/colors";
-import {saveDeckTitle, getDecks,getDeck,addCardToDeck} from "../utils/helpers";
+import {saveDeckTitle, getDecks, getDeck, addCardToDeck} from "../utils/helpers";
 
 
 class AddDeck extends Component {
-    state = {text: 'Useless Placeholder'};
+    state = {text: 'Deck Title'};
 
 
     render() {
 
         return (
             <View style={styles.content}>
-                <Text>Add Deck View</Text>
-                <ScrollView scrollEnabled={false}  >
+                <TouchableOpacity style={{backgroundColor:theme.primary}} >
+                    <Text style={styles.textButton}>Add</Text>
+                </TouchableOpacity>
+                <View>
+                    <Text>Title</Text>
+                </View>
+                <View>
                     <TextInput
-                        style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+                        style={{height: 40, width: 200, borderBottomColorColor: theme.primary, borderWidth: 2}}
                         onChangeText={(text) => this.setState({text})}
-                        onFocus= {() => this.setState({text : ''})}
+                        onFocus={() => this.setState({text: ''})}
                         value={this.state.text}
                     />
-                </ScrollView>
+                </View>
+                <View style={styles.button}>
+                    <TouchableOpacity >
+                        <Text style={styles.textButton}>Add</Text>
+                    </TouchableOpacity>
+                </View>
+
+
             </View>
         )
     }
@@ -35,24 +47,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
 
     },
-    container: {
-        flex:3,
-        justifyContent: 'center',
-        margin: 5,
-        padding: 2,
-        width: 300,
 
-    },
-    buttonGroup:{
-        flex:1,
-        justifyContent: 'center',
-        flexDirection: 'row',
-
-    },
 
     button: {
         flex: 1,
-
 
         padding: 2,
         margin: 2,
