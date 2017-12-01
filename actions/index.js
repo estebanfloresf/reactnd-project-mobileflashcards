@@ -20,6 +20,7 @@ export function getDecksData() {
 }
 
 export function getDecksSuccess(decks) {
+    console.log(decks);
     return {
         type: GET_DECKS_SUCCESS,
         decks
@@ -40,7 +41,7 @@ export function fetchDecks() {
         getDecks()
 
             .then((decks) => {
-                    console.log(decks);
+
                     dispatch(getDecksSuccess(decks))
                 }
             )
