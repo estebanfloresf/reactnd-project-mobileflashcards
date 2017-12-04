@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c2ef57a8-7d06-49e4-b9e0-12ceb73c3713" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/Decks/AddDeck.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/Quiz/Quiz.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/components/AddDeck.js" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/components/AddCard.js" afterPath="$PROJECT_DIR$/components/Cards/AddCard.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/components/Card.js" afterPath="$PROJECT_DIR$/components/Cards/Card.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/components/Decks.js" afterPath="$PROJECT_DIR$/components/Decks/Decks.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/components/Quiz.js" afterPath="$PROJECT_DIR$/components/Decks/singleDeck.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App.js" afterPath="$PROJECT_DIR$/App.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/actions/index.js" afterPath="$PROJECT_DIR$/actions/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package-lock.json" afterPath="$PROJECT_DIR$/package-lock.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reducers/Decks.js" afterPath="$PROJECT_DIR$/reducers/Decks.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/utils/helpers.js" afterPath="$PROJECT_DIR$/utils/helpers.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -339,7 +326,7 @@
       <workItem from="1511838859035" duration="4000" />
       <workItem from="1511990325550" duration="8874000" />
       <workItem from="1512094937333" duration="2922000" />
-      <workItem from="1512332951162" duration="10876000" />
+      <workItem from="1512332951162" duration="10955000" />
     </task>
     <task id="LOCAL-00001" summary="First COmmits">
       <created>1511736742149</created>
@@ -369,11 +356,18 @@
       <option name="project" value="LOCAL" />
       <updated>1512163959791</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Number of cards">
+      <created>1512353514698</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1512353514698</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="64712000" />
+    <option name="totallyTimeSpent" value="64791000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="728" extended-state="0" />
@@ -410,7 +404,8 @@
     <MESSAGE value="First COmmits" />
     <MESSAGE value="Design Phase" />
     <MESSAGE value="Helpers functions ready" />
-    <option name="LAST_COMMIT_MESSAGE" value="Helpers functions ready" />
+    <MESSAGE value="Number of cards" />
+    <option name="LAST_COMMIT_MESSAGE" value="Number of cards" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
