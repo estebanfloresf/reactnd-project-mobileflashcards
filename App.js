@@ -10,6 +10,8 @@ import thunk from 'redux-thunk';
 import { TabNavigator , StackNavigator} from 'react-navigation';
 import { FontAwesome, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'
 import AddDeck from './components/Decks/addDeck';
+import singleDeck  from  './components/Decks/singleDeck';
+
 
 
 
@@ -48,7 +50,7 @@ const Tabs = TabNavigator({
             tabBarIcon: ({ tintColor }) => <Ionicons name='ios-add' size={30} color={tintColor} />
 
         }
-    },
+    }
 } , {
 
     tabBarOptions: {
@@ -85,6 +87,19 @@ const MainNavigator = StackNavigator({
                 backgroundColor: theme.primary,
             },
         }
+    },
+    singleDeck:{
+        screen: singleDeck,
+        navigationOptions:({ navigation }) => ({
+            title:  `${navigation.state.params.title}`,
+            headerTintColor:theme.secondary,
+            headerStyle: {
+                // fontSize: 14,
+                backgroundColor: theme.primary,
+            },
+
+        })
+
     }
 });
 

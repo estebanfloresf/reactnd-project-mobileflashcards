@@ -45,7 +45,7 @@ export function decksReducer(state = initialState, action) {
         case ADD_DECK_SUCCESS:
             return {
                 ...state,
-                decks: [...state.decks, {'title': action.deckTitle}],
+                decks: [...state.decks,  action.newDeck],
                 addDeckFetching: false,
                 addDeckSuccess: true,
             };

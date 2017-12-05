@@ -7,11 +7,11 @@ export function getDecks() {
             const newArray = [];
             for (var i = 0; i < decks.length; i++) {
 
-                const deck =   AsyncStorage.getItem(decks[i])
+                AsyncStorage.getItem(decks[i])
                     .then(JSON.parse)
                     .then((deck) => {
-                       newArray.push(deck);
-                        return deck
+                        newArray.push(deck);
+
                     })
                     .catch((error) => {
                         console.log('There was an error getting the deck ' + error);
@@ -29,10 +29,10 @@ export function getDecks() {
 
 }
 
-export async function saveDeckTitle(title) {
+export function saveDeckTitle(title) {
 
     // 1. The title wil be the key in AsyncStorage
-    const key = title.trim().toLowerCase();
+    const key = titleCapitalize( title.trim().toLowerCase());
     // 2. Array of cards it will have the decks
     const questions = [];
     // 3. Create the object deck
@@ -46,11 +46,11 @@ export async function saveDeckTitle(title) {
     AsyncStorage.setItem(key, JSON.stringify(newDeck));
 
 
-    return await AsyncStorage.getItem(key)
+    return AsyncStorage.getItem(key)
         .then(JSON.parse)
         .then((deck) => {
 
-            return deck.title
+            return deck
         })
         .catch(() => {
             console.log('There was an error saving the deck ' + title);
@@ -88,4 +88,12 @@ export async function addCardToDeck(title, card) {
         .catch(() => {
             return 'Error adding the card ' + card + ' to the deck ' + title
         });
+}
+
+
+export function titleCapitalize(str) {
+    return str.replace(/\w\S*/g, function (txt) {
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
+
 }

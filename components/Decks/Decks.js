@@ -11,7 +11,6 @@ import {white, theme} from "../../utils/colors";
 import {fetchDecks} from '../../actions/index';
 import {connect} from 'react-redux';
 import Swipeout from 'react-native-swipeout';
-import index from "../../reducers/index";
 
 
 class Decks extends Component {
@@ -22,34 +21,14 @@ class Decks extends Component {
         activeRowKey: null,
     };
 
+
     componentDidMount() {
         this.props.fetchDecks();
     }
 
-    _onPress = (title) => {
-        console.log("go to deck" + title);
-
-    };
-    _deleteDeck = (item) => {
-        console.log("delete " + item);
-
-    };
 
     render() {
         const {decks, deckFetching, deckFail} = this.props;
-
-        const swipeBtns = [{
-            text: 'Delete',
-            backgroundColor: 'red',
-            underlayColor: '#ff1722',
-            rowID: '',
-            onPress: () => {
-
-                console.log(this.props.rowID);
-                // this._deleteDeck(this.props.item.title)
-            },
-
-        }];
 
         return (
             <View style={styles.content}>
@@ -58,36 +37,37 @@ class Decks extends Component {
                     deckFetching ? <Text style={{color: theme.info, fontSize: 50}}>Loading...</Text>
                         : deckFail ?
                         <Text style={{color: theme.warning, fontSize: 50}}>Sorry we couldn't get your decks</Text>
-                        :  decks && decks.length>0 ?
+                        : decks ?
                             <FlatList
                                 data={decks}
                                 keyExtractor={(item, index) => index}
                                 renderItem={({item}) =>
 
-                                    <Swipeout right={swipeBtns}
-                                              autoClose={true}
-                                              backgroundColor='transparent'
-                                              rowID={item}
-                                    >
 
-                                        <TouchableOpacity style={styles.cards}
-                                                          onPress={() => this._onPress(item.title)}>
-                                            <View>
-                                                <View>
-                                                    <Text style={{color: white, fontSize: 30}}>{item.title}</Text>
-                                                </View>
-                                                <View>
-                                                    <Text style={{color: white, fontSize: 10}}>{item.questions.length}
-                                                        cards</Text>
-                                                </View>
-                                            </View>
+                                    <TouchableOpacity style={styles.cards}
+                                                      onPress={() => this.props.navigation.navigate('singleDeck', {title: item.title})}>
+
+                                        <View style={styles.titleCard}>
+                                            <Text style={{color: white, fontSize: 30}}>{item.title}</Text>
+                                        </View>
+                                        <View style={styles.subtitleCard}>
+                                            <Text style={{
+                                                color: white,
+                                                fontSize: 15,
+                                                textAlign: 'right',
 
 
-                                        </TouchableOpacity>
-                                    </Swipeout>
+                                            }}>
+                                                {item.questions.length + ' cards'}
+                                            </Text>
+                                        </View>
+
+
+                                    </TouchableOpacity>
+
                                 }
                             />
-                            : <Text>It looks you haven't add any decks yet =)</Text>
+                            : decks.length < 0 && <Text>It looks you haven't add any decks yet =)</Text>
 
 
                 }
@@ -158,9 +138,23 @@ const styles = StyleSheet.create({
         alignItems: 'flex-start',
         width: 300,
         height: 150,
-        margin: 6,
-        padding: 2
+        margin: 5,
+        padding: 3
+    },
+
+    contentCard: {
+        flex: 1
+    },
+    titleCard: {
+        flex: 2
+    },
+    subtitleCard: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        alignItems: 'center'
     }
+
 });
 
 export default connect(

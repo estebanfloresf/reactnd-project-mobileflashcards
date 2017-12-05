@@ -35,10 +35,10 @@ export function addDeckData() {
     }
 }
 
-export function addDeckSuccess(deckTitle) {
+export function addDeckSuccess(newDeck) {
     return {
         type: ADD_DECK_SUCCESS,
-        deckTitle
+        newDeck
     }
 }
 
@@ -80,6 +80,7 @@ export function addDeck(title) {
 
 
             .then((deck) => {
+            console.log(deck);
                     dispatch(addDeckSuccess(deck))
                 }
             )
