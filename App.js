@@ -9,7 +9,7 @@ import reducer from './reducers';
 import thunk from 'redux-thunk';
 import { TabNavigator , StackNavigator} from 'react-navigation';
 import { FontAwesome, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'
-import AddDeck from './components/Decks/AddDeck';
+import AddDeck from './components/Decks/addDeck';
 
 
 

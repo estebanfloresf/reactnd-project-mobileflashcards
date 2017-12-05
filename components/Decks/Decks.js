@@ -11,6 +11,7 @@ import {white, theme} from "../../utils/colors";
 import {fetchDecks} from '../../actions/index';
 import {connect} from 'react-redux';
 import Swipeout from 'react-native-swipeout';
+import index from "../../reducers/index";
 
 
 class Decks extends Component {
@@ -18,7 +19,7 @@ class Decks extends Component {
     state = {
         text: 'Title Deck',
         decks: [],
-        deckToDelete : null,
+        activeRowKey: null,
     };
 
     componentDidMount() {
@@ -26,25 +27,28 @@ class Decks extends Component {
     }
 
     _onPress = (title) => {
-        console.log("go to deck"+title);
-        this.setState({
-            deckToDelete: title
-        })
+        console.log("go to deck" + title);
+
     };
-    _deleteDeck = () => {
-        console.log("delete"+ item);
+    _deleteDeck = (item) => {
+        console.log("delete " + item);
 
     };
 
     render() {
         const {decks, deckFetching, deckFail} = this.props;
+
         const swipeBtns = [{
             text: 'Delete',
             backgroundColor: 'red',
             underlayColor: '#ff1722',
+            rowID: '',
             onPress: () => {
-                this._deleteDeck()
-            }
+
+                console.log(this.props.rowID);
+                // this._deleteDeck(this.props.item.title)
+            },
+
         }];
 
         return (
@@ -54,8 +58,7 @@ class Decks extends Component {
                     deckFetching ? <Text style={{color: theme.info, fontSize: 50}}>Loading...</Text>
                         : deckFail ?
                         <Text style={{color: theme.warning, fontSize: 50}}>Sorry we couldn't get your decks</Text>
-                        : decks.length < 0 ? <Text>It looks you haven't add any decks yet =)</Text>
-                            :
+                        :  decks && decks.length>0 ?
                             <FlatList
                                 data={decks}
                                 keyExtractor={(item, index) => index}
@@ -63,9 +66,12 @@ class Decks extends Component {
 
                                     <Swipeout right={swipeBtns}
                                               autoClose={true}
-                                              backgroundColor='transparent'>
+                                              backgroundColor='transparent'
+                                              rowID={item}
+                                    >
 
-                                        <TouchableOpacity style={styles.cards} onPress={this._onPress(item.title)}>
+                                        <TouchableOpacity style={styles.cards}
+                                                          onPress={() => this._onPress(item.title)}>
                                             <View>
                                                 <View>
                                                     <Text style={{color: white, fontSize: 30}}>{item.title}</Text>
@@ -81,6 +87,8 @@ class Decks extends Component {
                                     </Swipeout>
                                 }
                             />
+                            : <Text>It looks you haven't add any decks yet =)</Text>
+
 
                 }
 
