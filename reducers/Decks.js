@@ -53,7 +53,8 @@ export function decksReducer(state = initialState, action) {
             return{
                 ...state,
                 addDeckFetching: false,
-                addDeckError: true,
+                addDeckSuccess: false,
+                addDeckError: action.payload,
             };
 
         default:

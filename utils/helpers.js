@@ -1,4 +1,4 @@
-import {AsyncStorage} from 'react-native'
+import {AsyncStorage, Alert} from 'react-native'
 
 export function getDecks() {
 
@@ -31,31 +31,44 @@ export function getDecks() {
 
 export function saveDeckTitle(title) {
 
-    // 1. The title wil be the key in AsyncStorage
-    const key = titleCapitalize( title.trim().toLowerCase());
-    // 2. Array of cards it will have the decks
-    const questions = [];
-    // 3. Create the object deck
-    const newDeck = {
-        title: key,
-        questions
-    };
+    //Verify if the deck name already exists
+    return AsyncStorage.getAllKeys()
+        .then((decks) => {
+            let existDups = decks.filter((deck) => deck === title);
+            if (existDups.length>0) {
 
 
-    // We saved at AsyncStorage, if successful return true
-    AsyncStorage.setItem(key, JSON.stringify(newDeck));
+                return false
+            }
+            else {
+                // 1. The title wil be the key in AsyncStorage
+                const key = titleCapitalize(title.trim().toLowerCase());
+                // 2. Array of cards it will have the decks
+                const questions = [];
+                // 3. Create the object deck
+                const newDeck = {
+                    title: key,
+                    questions
+                };
 
 
-    return AsyncStorage.getItem(key)
-        .then(JSON.parse)
-        .then((deck) => {
+                // We saved at AsyncStorage, if successful return true
+                AsyncStorage.setItem(key, JSON.stringify(newDeck));
 
-            return deck
-        })
-        .catch(() => {
-            console.log('There was an error saving the deck ' + title);
-            return false
+
+                return AsyncStorage.getItem(key)
+                    .then(JSON.parse)
+                    .then((deck) => {
+
+                        return deck
+                    })
+                    .catch(() => {
+                        console.log('There was an error saving the deck ' + title);
+                        return false
+                    });
+            }
         });
+
 
 }
 

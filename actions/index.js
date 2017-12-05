@@ -42,9 +42,10 @@ export function addDeckSuccess(newDeck) {
     }
 }
 
-export function addDeckFail() {
+export function addDeckFail(bool) {
     return {
-        type: ADD_DECK_FAIL
+        type: ADD_DECK_FAIL,
+        payload: bool
     }
 }
 
@@ -77,17 +78,19 @@ export function addDeck(title) {
     return (dispatch) => {
         dispatch(addDeckData());
         saveDeckTitle(title)
-
-
             .then((deck) => {
-            console.log(deck);
-                    dispatch(addDeckSuccess(deck))
+                    if (deck === false) {
+                        dispatch(addDeckFail(true))
+                    } else {
+
+                        dispatch(addDeckSuccess(deck))
+                    }
                 }
             )
             .catch((error) => {
 
                     console.log('Error saving the decks ' + error);
-                    dispatch(addDeckFail())
+                    dispatch(addDeckFail(true))
                 }
             )
 

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {StyleSheet, Alert, View, Text, TouchableOpacity, Keyboard, TextInput} from 'react-native';
 import {white, theme} from "../../utils/colors";
 import {connect} from 'react-redux';
-import {addDeck} from '../../actions/index';
+import {addDeck,addDeckFail} from '../../actions/index';
 
 
 class AddDeck extends Component {
@@ -39,8 +39,8 @@ class AddDeck extends Component {
                 <View style={styles.buttonView}>
 
                     <TouchableOpacity style={styles.button} onPress={() => {
-                            this._addDeck();
-                            Keyboard.dismiss()
+                        this._addDeck();
+                        Keyboard.dismiss()
 
                     }}>
                         <Text style={styles.textButton}>Add Deck</Text>
@@ -49,9 +49,28 @@ class AddDeck extends Component {
 
                 <View style={styles.messages}>
                     {
-                        addDeckFetching ? <Text style={{textAlign:'center'}}>Loading...</Text>
-                            : addDeckError ? Alert.alert('There has been a problem saving your dec')
-                            : addDeckSuccess && Alert.alert('Hurray your deck has been saved')
+                        addDeckFetching ? <Text style={{textAlign: 'center'}}>Loading...</Text>
+                            : addDeckError ?
+                            Alert.alert(
+                                'Deck Duplicated',
+                                'Your title is already in use',
+                                [
+
+                                    {text: 'Change Title', onPress: () =>this.props.addDeckFail(false)},
+
+                                ],
+                                {cancelable: false}
+                            )
+                            : addDeckSuccess &&  Alert.alert(
+                            'Deck Added',
+                            'Your deck  has been added',
+                            [
+
+                                {text: 'Awesome', onPress: () =>this.props.addDeckFail(false)},
+
+                            ],
+                            {cancelable: false}
+                            )
 
                     }
                 </View>
@@ -73,7 +92,9 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-    addDeck
+    addDeck,
+    addDeckFail
+
 };
 
 const styles = StyleSheet.create({
@@ -115,8 +136,8 @@ const styles = StyleSheet.create({
         fontSize: 25,
         padding: 2,
     },
-    messages:{
-        flex:2,
+    messages: {
+        flex: 2,
         justifyContent: 'flex-start',
 
     }

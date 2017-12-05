@@ -41,11 +41,11 @@ class Decks extends Component {
                             <FlatList
                                 data={decks}
                                 keyExtractor={(item, index) => index}
-                                renderItem={({item}) =>
+                                renderItem={({item,index}) =>
 
 
                                     <TouchableOpacity style={styles.cards}
-                                                      onPress={() => this.props.navigation.navigate('singleDeck', {title: item.title})}>
+                                                      onPress={() => this.props.navigation.navigate('singleDeck', {title: item.title, key:index})}>
 
                                         <View style={styles.titleCard}>
                                             <Text style={{color: white, fontSize: 30}}>{item.title}</Text>
