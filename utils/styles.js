@@ -20,6 +20,7 @@ export const components = StyleSheet.create({
         backgroundColor: colors.secondary,
         alignItems: 'center',
         justifyContent: 'center',
+
     },
 
     card: {
@@ -31,7 +32,8 @@ export const components = StyleSheet.create({
         width: 300,
         height: 150,
         margin: 5,
-        padding: 3
+        padding: 3,
+        marginTop: 50,
     },
     cardTitleText: {
         color: colors.white, fontSize: 30

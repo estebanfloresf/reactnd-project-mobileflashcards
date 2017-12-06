@@ -25,59 +25,72 @@ class AddDeck extends Component {
         return (
 
             <View style={components.content}>
-
-                <View>
-                    <View style={components.card}>
-                        <TextInput
-                            style={styles.inputFieldText}
-                            onChangeText={(newdeckTitle) => this.setState({deckTitle: newdeckTitle})}
-                            value={deckTitle}
-                            onFocus={() => this.setState({deckTitle: ''})}
-                        />
-                    </View>
-
-                    <View style={components.buttonView}>
-
-                        <TouchableOpacity style={components.button} onPress={() => {
-                            this._addDeck();
-                            Keyboard.dismiss()
-
-                        }}>
-                            <Text style={components.textButton}>Add Deck</Text>
-                        </TouchableOpacity>
-                    </View>
-
-                    <View style={styles.messages}>
-                        {
-                            addDeckFetching ? <Text style={{textAlign: 'center'}}>Loading...</Text>
-                                : addDeckError ?
-                                Alert.alert(
-                                    'Deck Duplicated',
-                                    'Your title is already in use',
-                                    [
-
-                                        {text: 'Change Title', onPress: () => this.props.addDeckFail(false)},
-
-                                    ],
-                                    {cancelable: false}
-                                )
-                                : addDeckSuccess && Alert.alert(
-                                'Deck Added',
-                                'Your deck  has been added',
-                                [
-
-                                    {text: 'Awesome', onPress: () => this.props.addDeckFail(false)},
-
-                                ],
-                                {cancelable: false}
-                                )
-
-                        }
-                    </View>
-
+                <View style={{width:500, flex:1, backgroundColor:colors.warning}}>
+                    <TextInput
+                        style={styles.inputFieldText}
+                        onChangeText={(newdeckTitle) => this.setState({deckTitle: newdeckTitle})}
+                        value={deckTitle}
+                        onFocus={() => this.setState({deckTitle: ''})}
+                    />
                 </View>
 
+                    {/*<View>*/}
+                            {/*<TextInput*/}
+                                {/*style={styles.inputFieldText}*/}
+                                {/*onChangeText={(newdeckTitle) => this.setState({deckTitle: newdeckTitle})}*/}
+                                {/*value={deckTitle}*/}
+                                {/*onFocus={() => this.setState({deckTitle: ''})}*/}
+                            {/*/>*/}
+                       {/**/}
+                    {/*</View>*/}
+                    {/*<View style={{flex:3}}>*/}
+                        {/*<TextInput*/}
+                            {/*style={styles.inputFieldText}*/}
+                            {/*onChangeText={(newdeckTitle) => this.setState({deckTitle: newdeckTitle})}*/}
+                            {/*value={deckTitle}*/}
+                            {/*onFocus={() => this.setState({deckTitle: ''})}*/}
+                        {/*/>*/}
+                    {/*</View>*/}
+                    {/*<View style={components.buttonView}>*/}
+                        {/*<TouchableOpacity style={components.button} onPress={() => {*/}
+                            {/*this._addDeck();*/}
+                            {/*Keyboard.dismiss()*/}
+
+                        {/*}}>*/}
+                            {/*<Text style={components.textButton}>Add Deck</Text>*/}
+                        {/*</TouchableOpacity>*/}
+                    {/*</View>*/}
+
+                    {/*<View style={styles.messages}>*/}
+                        {/*{*/}
+                            {/*addDeckFetching ? <Text style={{textAlign: 'center'}}>Loading...</Text>*/}
+                                {/*: addDeckError ?*/}
+                                {/*Alert.alert(*/}
+                                    {/*'Deck Duplicated',*/}
+                                    {/*'Your title is already in use',*/}
+                                    {/*[*/}
+
+                                        {/*{text: 'Change Title', onPress: () => this.props.addDeckFail(false)},*/}
+
+                                    {/*],*/}
+                                    {/*{cancelable: false}*/}
+                                {/*)*/}
+                                {/*: addDeckSuccess && Alert.alert(*/}
+                                {/*'Deck Added',*/}
+                                {/*'Your deck  has been added',*/}
+                                {/*[*/}
+
+                                    {/*{text: 'Awesome', onPress: () => this.props.addDeckFail(false)},*/}
+
+                                {/*],*/}
+                                {/*{cancelable: false}*/}
+                                {/*)*/}
+
+                        {/*}*/}
+                    {/*</View>*/}
+
             </View>
+
 
         )
     }
@@ -102,7 +115,9 @@ const mapDispatchToProps = {
 const styles = StyleSheet.create({
 
     inputFieldText: {
-        // height: 40,
+        height: 80,
+        width: 220,
+
         borderBottomColor: colors.secondary,
         borderBottomWidth: 3,
         textAlign: 'center',
