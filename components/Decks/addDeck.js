@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {StyleSheet, Alert, View, Text, TouchableOpacity, Keyboard, TextInput} from 'react-native';
-import {white, theme} from "../../utils/colors";
+import {components, colors} from "../../utils/styles";
 import {connect} from 'react-redux';
-import {addDeck,addDeckFail} from '../../actions/index';
+import {addDeck, addDeckFail} from '../../actions/index';
 
 
 class AddDeck extends Component {
@@ -24,55 +24,57 @@ class AddDeck extends Component {
         const {addDeckFetching, addDeckError, addDeckSuccess} = this.props;
         return (
 
-            <View style={styles.content}>
+            <View style={components.content}>
 
+                <View>
+                    <View style={components.card}>
+                        <TextInput
+                            style={styles.inputFieldText}
+                            onChangeText={(newdeckTitle) => this.setState({deckTitle: newdeckTitle})}
+                            value={deckTitle}
+                            onFocus={() => this.setState({deckTitle: ''})}
+                        />
+                    </View>
 
-                <View style={styles.inputField}>
-                    <TextInput
-                        style={styles.inputFieldText}
-                        onChangeText={(newdeckTitle) => this.setState({deckTitle: newdeckTitle})}
-                        value={deckTitle}
-                        onFocus={() => this.setState({deckTitle: ''})}
-                    />
-                </View>
+                    <View style={components.buttonView}>
 
-                <View style={styles.buttonView}>
+                        <TouchableOpacity style={components.button} onPress={() => {
+                            this._addDeck();
+                            Keyboard.dismiss()
 
-                    <TouchableOpacity style={styles.button} onPress={() => {
-                        this._addDeck();
-                        Keyboard.dismiss()
+                        }}>
+                            <Text style={components.textButton}>Add Deck</Text>
+                        </TouchableOpacity>
+                    </View>
 
-                    }}>
-                        <Text style={styles.textButton}>Add Deck</Text>
-                    </TouchableOpacity>
-                </View>
+                    <View style={styles.messages}>
+                        {
+                            addDeckFetching ? <Text style={{textAlign: 'center'}}>Loading...</Text>
+                                : addDeckError ?
+                                Alert.alert(
+                                    'Deck Duplicated',
+                                    'Your title is already in use',
+                                    [
 
-                <View style={styles.messages}>
-                    {
-                        addDeckFetching ? <Text style={{textAlign: 'center'}}>Loading...</Text>
-                            : addDeckError ?
-                            Alert.alert(
-                                'Deck Duplicated',
-                                'Your title is already in use',
+                                        {text: 'Change Title', onPress: () => this.props.addDeckFail(false)},
+
+                                    ],
+                                    {cancelable: false}
+                                )
+                                : addDeckSuccess && Alert.alert(
+                                'Deck Added',
+                                'Your deck  has been added',
                                 [
 
-                                    {text: 'Change Title', onPress: () =>this.props.addDeckFail(false)},
+                                    {text: 'Awesome', onPress: () => this.props.addDeckFail(false)},
 
                                 ],
                                 {cancelable: false}
-                            )
-                            : addDeckSuccess &&  Alert.alert(
-                            'Deck Added',
-                            'Your deck  has been added',
-                            [
+                                )
 
-                                {text: 'Awesome', onPress: () =>this.props.addDeckFail(false)},
+                        }
+                    </View>
 
-                            ],
-                            {cancelable: false}
-                            )
-
-                    }
                 </View>
 
             </View>
@@ -98,40 +100,17 @@ const mapDispatchToProps = {
 };
 
 const styles = StyleSheet.create({
-    content: {
-        flex: 1,
-        backgroundColor: theme.secondary,
 
-        justifyContent: 'center',
-
-
-    },
-    inputField: {
-        flex: 2,
-        justifyContent: 'flex-end',
-
-        // alignItems: 'center',
-        // borderBottomWidth: 3,
-        // borderBottomColor: theme.primary,
-        margin: 3,
-    },
     inputFieldText: {
-        height: 40,
-        borderBottomColor: theme.primary,
+        // height: 40,
+        borderBottomColor: colors.secondary,
         borderBottomWidth: 3,
         textAlign: 'center',
-        backgroundColor: white,
+        backgroundColor: colors.white,
     },
-    buttonView: {
-        flex: 2,
-    },
-    button: {
-        margin: 3,
-        backgroundColor: theme.primary,
-        borderRadius: 18,
-    },
+
     textButton: {
-        color: theme.info,
+        color: colors.info,
         textAlign: 'center',
         fontSize: 25,
         padding: 2,

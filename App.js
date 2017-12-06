@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet, Text, View, StatusBar} from 'react-native';
 import {Constants} from 'expo';
 import Decks from './components/Decks/Decks';
-import {theme} from "./utils/colors";
+import {colors} from "./utils/styles";
 import {Provider} from 'react-redux';
 import {createStore, applyMiddleware,compose} from 'redux';
 import reducer from './reducers';
@@ -54,12 +54,12 @@ const Tabs = TabNavigator({
 } , {
 
     tabBarOptions: {
-        activeTintColor: theme.secondary,
+        activeTintColor: colors.secondary,
         labelStyle: {
             fontSize: 14,
         },
         style: {
-            backgroundColor: theme.primary,
+            backgroundColor: colors.primary,
         },
     }
 });
@@ -70,10 +70,10 @@ const MainNavigator = StackNavigator({
         screen: Tabs,
         navigationOptions:{
             // title: 'Decks',
-            headerTintColor:theme.secondary,
+            headerTintColor:colors.secondary,
             headerStyle: {
                 // fontSize: 14,
-                backgroundColor: theme.primary,
+                backgroundColor: colors.primary,
             },
         },
     },
@@ -81,10 +81,10 @@ const MainNavigator = StackNavigator({
         screen: AddDeck,
         navigationOptions: {
             title: 'Add Deck',
-            headerTintColor:theme.secondary,
+            headerTintColor:colors.secondary,
             headerStyle: {
                 // fontSize: 14,
-                backgroundColor: theme.primary,
+                backgroundColor: colors.primary,
             },
         }
     },
@@ -92,10 +92,10 @@ const MainNavigator = StackNavigator({
         screen: singleDeck,
         navigationOptions:({ navigation }) => ({
             title:  `${navigation.state.params.title}`,
-            headerTintColor:theme.secondary,
+            headerTintColor:colors.secondary,
             headerStyle: {
                 // fontSize: 14,
-                backgroundColor: theme.primary,
+                backgroundColor: colors.primary,
             },
 
         })
@@ -120,7 +120,7 @@ export default class App extends React.Component {
         return (
             <Provider store={store}>
                 <View style={{flex: 1}}>
-                    <StatusBarCards backgroundColor={theme.primary} barStyle='light-content'/>
+                    <StatusBarCards backgroundColor={colors.primary} barStyle='light-content'/>
                     <MainNavigator/>
                 </View>
             </Provider>
@@ -136,6 +136,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: theme.secondary
+        backgroundColor: colors.secondary
     },
 });

@@ -7,10 +7,10 @@ import {
     FlatList,
 
 } from 'react-native';
-import {white, theme} from "../../utils/colors";
+import {white, colors} from "../../utils/styles";
 import {fetchDecks} from '../../actions/index';
 import {connect} from 'react-redux';
-import Swipeout from 'react-native-swipeout';
+import {components} from "../../utils/styles";
 
 
 class Decks extends Component {
@@ -31,12 +31,12 @@ class Decks extends Component {
         const {decks, deckFetching, deckFail} = this.props;
 
         return (
-            <View style={styles.content}>
+            <View style={components.content}>
 
                 {
-                    deckFetching ? <Text style={{color: theme.info, fontSize: 50}}>Loading...</Text>
+                    deckFetching ? <Text style={{color: colors.info, fontSize: 50}}>Loading...</Text>
                         : deckFail ?
-                        <Text style={{color: theme.warning, fontSize: 50}}>Sorry we couldn't get your decks</Text>
+                        <Text style={{color: colors.warning, fontSize: 50}}>Sorry we couldn't get your decks</Text>
                         : decks ?
                             <FlatList
                                 data={decks}
@@ -47,19 +47,11 @@ class Decks extends Component {
                                     <TouchableOpacity style={styles.cards}
                                                       onPress={() => this.props.navigation.navigate('singleDeck', {title: item.title, key:index})}>
 
-                                        <View style={styles.titleCard}>
-                                            <Text style={{color: white, fontSize: 30}}>{item.title}</Text>
+                                        <View>
+                                            <Text style={components.cardTitleText}>{item.title}</Text>
                                         </View>
-                                        <View style={styles.subtitleCard}>
-                                            <Text style={{
-                                                color: white,
-                                                fontSize: 15,
-                                                textAlign: 'right',
-
-
-                                            }}>
-                                                {item.questions.length + ' cards'}
-                                            </Text>
+                                        <View >
+                                            <Text style={components.cardSubText} >{item.questions.length + ' cards'}</Text>
                                         </View>
 
 
@@ -94,7 +86,7 @@ const mapDispatchToProps = {
 const styles = StyleSheet.create({
     content: {
         flex: 1,
-        backgroundColor: theme.secondary,
+        backgroundColor: colors.secondary,
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -114,7 +106,7 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: 2,
         margin: 2,
-        backgroundColor: theme.primary,
+        backgroundColor: colors.primary,
         alignItems: 'center',
         borderRadius: 10,
         marginRight: 2,
@@ -122,7 +114,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     textButton: {
-        color: theme.info,
+        color: colors.info,
         textAlign: 'center',
         alignItems: 'center',
         fontSize: 15,
@@ -130,7 +122,7 @@ const styles = StyleSheet.create({
     },
 
     cards: {
-        backgroundColor: theme.primary,
+        backgroundColor: colors.primary,
 
         flex: 3,
         borderRadius: 5,
