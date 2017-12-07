@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import {StyleSheet, Alert, View, Text, TouchableOpacity, Keyboard, TextInput} from 'react-native';
+import {Alert, View, Text, TouchableOpacity, Keyboard, TextInput, TouchableWithoutFeedback} from 'react-native';
 import {components, colors} from "../../utils/styles";
 import {connect} from 'react-redux';
-import {addDeck, addDeckFail} from '../../actions/index';
+import {addDeck, addDeckFail} from '../../actions/Decks';
 
 
 class AddDeck extends Component {
@@ -12,77 +12,73 @@ class AddDeck extends Component {
     }
 
     _addDeck = () => {
-
-
         this.props.addDeck(this.state.deckTitle);
         this.setState({deckTitle: 'Your Deck Title'})
     };
 
     render() {
-
         const {deckTitle} = this.state;
         const {addDeckFetching, addDeckError, addDeckSuccess} = this.props;
         return (
-
             <View style={components.content}>
-                <View style={[components.card, {justifyContent:'flex-end',alignItems: 'center', backgroundColor:colors.secondary}]}>
-                    <TextInput
-                        style={styles.inputFieldText}
-                        onChangeText={(newdeckTitle) => this.setState({deckTitle: newdeckTitle})}
-                        value={deckTitle}
-                        onFocus={() => this.setState({deckTitle: ''})}
-                    />
-                </View>
+                <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+                    <View>
+                        <View style={[components.card, {
+                            justifyContent: 'flex-end',
+                            alignItems: 'center',
+                            backgroundColor: colors.secondary
+                        }]}>
+                            <TextInput
+                                style={components.inputFieldText}
+                                onChangeText={(newdeckTitle) => this.setState({deckTitle: newdeckTitle})}
+                                value={deckTitle}
+                                onFocus={() => this.setState({deckTitle: ''})}
+                            />
+                        </View>
+                        <View style={components.buttonView}>
+                            <TouchableOpacity style={components.button} onPress={() => {
+                                this._addDeck();
+                                Keyboard.dismiss()
+                            }}>
+                                <Text style={components.textButton}>Add Deck</Text>
+                            </TouchableOpacity>
+                        </View>
+                        <View style={components.messages}>
+                            {
+                                addDeckFetching ? <Text style={{textAlign: 'center'}}>Loading...</Text>
+                                    : addDeckError ?
+                                    Alert.alert(
+                                        'Add Deck Error',
+                                        'That deck title is already in use or is an invalid title',
+                                        [
 
+                                            {text: 'Change Title', onPress: () => this.props.addDeckFail(false)},
 
-                <View style={components.buttonView}>
-                    <TouchableOpacity style={components.button} onPress={() => {
-                        this._addDeck();
-                        Keyboard.dismiss()
+                                        ],
+                                        {cancelable: false}
+                                    )
+                                    : addDeckSuccess && Alert.alert(
+                                    'Deck Added',
+                                    'Your deck  has been added',
+                                    [
 
-                    }}>
-                        <Text style={components.textButton}>Add Deck</Text>
-                    </TouchableOpacity>
-                </View>
+                                        {text: 'Awesome', onPress: () => this.props.addDeckFail(false)},
 
-                <View style={styles.messages}>
-                    {
-                        addDeckFetching ? <Text style={{textAlign: 'center'}}>Loading...</Text>
-                            : addDeckError ?
-                            Alert.alert(
-                                'Deck Duplicated',
-                                'Your title is already in use',
-                                [
+                                    ],
+                                    {cancelable: false}
+                                    )
 
-                                    {text: 'Change Title', onPress: () => this.props.addDeckFail(false)},
-
-                                ],
-                                {cancelable: false}
-                            )
-                            : addDeckSuccess && Alert.alert(
-                            'Deck Added',
-                            'Your deck  has been added',
-                            [
-
-                                {text: 'Awesome', onPress: () => this.props.addDeckFail(false)},
-
-                            ],
-                            {cancelable: false}
-                            )
-
-                    }
-                </View>
-
+                            }
+                        </View>
+                    </View>
+                </TouchableWithoutFeedback>
             </View>
-
-
         )
     }
 }
 
 
 function mapStateToProps(state) {
-
     return {
         addDeckSuccess: state.decksReducer.addDeckSuccess,
         addDeckError: state.decksReducer.addDeckError,
@@ -93,33 +89,7 @@ function mapStateToProps(state) {
 const mapDispatchToProps = {
     addDeck,
     addDeckFail
-
 };
-
-const styles = StyleSheet.create({
-
-    inputFieldText: {
-        height: 50,
-        width: 300,
-
-        borderBottomColor: colors.primary,
-        borderBottomWidth: 3,
-        textAlign: 'center',
-        backgroundColor: colors.white,
-    },
-
-    textButton: {
-        color: colors.info,
-        textAlign: 'center',
-        fontSize: 25,
-        padding: 2,
-    },
-    messages: {
-        flex: 2,
-        justifyContent: 'flex-start',
-
-    }
-});
 
 export default connect(
     mapStateToProps,

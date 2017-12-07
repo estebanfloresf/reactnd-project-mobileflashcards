@@ -10,6 +10,7 @@ export const colors = {
     secondary: '#beebfc',
     primary: '#0b132b',
     white: '#fff',
+    gray: '#9c9c9c'
 };
 
 
@@ -70,5 +71,20 @@ export const components = StyleSheet.create({
         alignItems: 'center',
         fontSize: 15,
         padding: 4,
+    },
+
+    inputFieldText: {
+        height: 50,
+        width: 300,
+        color: colors.gray,
+        borderBottomColor: colors.primary,
+        borderBottomWidth: 3,
+        textAlign: 'center',
+        backgroundColor: colors.white,
+    },
+    messages: {
+        flex: 2,
+        justifyContent: 'flex-start',
+
     },
 });

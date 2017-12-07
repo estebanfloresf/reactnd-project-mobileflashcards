@@ -1,11 +1,13 @@
 import {getDecks, saveDeckTitle} from '../utils/helpers';
 
-export const ADD_DECK_SUCCESS = 'ADD_DECK_SUCCESS';
-export const ADD_DECK_FETCHING = 'ADD_DECK_FETCHING';
-export const ADD_DECK_FAIL = 'ADD_DECK_FAIL';
-export const GET_DECKS_FETCHING = 'GET_DECKS_FETCHING';
-export const GET_DECKS_SUCCESS = 'GET_DECKS_SUCCESS';
-export const GET_DECKS_FAIL = 'GET_DECKS_FAIL';
+import {
+    ADD_DECK_SUCCESS,
+    ADD_DECK_FETCHING,
+    ADD_DECK_FAIL,
+    GET_DECKS_FETCHING,
+    GET_DECKS_SUCCESS,
+    GET_DECKS_FAIL,
+} from './types';
 
 
 export function getDecksData() {
@@ -49,7 +51,7 @@ export function addDeckFail(bool) {
     }
 }
 
-//Get data
+//Get Decks
 export function fetchDecks() {
     return (dispatch) => {
         dispatch(getDecksData());
@@ -72,7 +74,6 @@ export function fetchDecks() {
 }
 
 //Add Deck
-
 export function addDeck(title) {
 
     return (dispatch) => {
@@ -97,3 +98,4 @@ export function addDeck(title) {
 
     };
 }
+

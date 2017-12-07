@@ -4,8 +4,11 @@ import {
     ADD_DECK_FETCHING,
     GET_DECKS_FAIL,
     GET_DECKS_SUCCESS,
-    GET_DECKS_FETCHING
-} from "../actions/index";
+    GET_DECKS_FETCHING,
+    ADD_CARD_FAIL,
+    ADD_CARD_FETCHING,
+    ADD_CARD_SUCCESS,
+} from "../actions/types";
 
 
 const initialState = {
@@ -15,6 +18,9 @@ const initialState = {
     addDeckFetching: false,
     addDeckError: false,
     addDeckSuccess: false,
+    addCardFetching: false,
+    addCardError: false,
+    addCardSuccess:false,
 };
 
 export function decksReducer(state = initialState, action) {
@@ -55,6 +61,25 @@ export function decksReducer(state = initialState, action) {
                 addDeckFetching: false,
                 addDeckSuccess: false,
                 addDeckError: action.payload,
+            };
+        case ADD_CARD_FETCHING:
+            return{
+                ...state,
+                addDeckFetching: true,
+            };
+        case ADD_CARD_SUCCESS:
+            return {
+                ...state,
+                decks: [...state.decks,  action.deckUpdated],
+                addCardFetching: false,
+                addCardSuccessSuccess: true,
+            };
+        case ADD_CARD_FAIL:
+            return{
+                ...state,
+                addCardFetching: false,
+                addCardSuccess: false,
+                addCardError: action.payload,
             };
 
         default:

@@ -35,38 +35,42 @@ export function saveDeckTitle(title) {
     return AsyncStorage.getAllKeys()
         .then((decks) => {
             let existDups = decks.filter((deck) => deck === title);
-            if (existDups.length>0) {
-
+            if (existDups.length > 0) {
 
                 return false
+            } else {
+                if (title.length <= 0) {
+                    return false
+                }
+                else {
+                    // 1. The title wil be the key in AsyncStorage
+                    const key = titleCapitalize(title.trim().toLowerCase());
+                    // 2. Array of cards it will have the decks
+                    const questions = [];
+                    // 3. Create the object deck
+                    const newDeck = {
+                        title: key,
+                        questions
+                    };
+
+
+                    // We saved at AsyncStorage, if successful return true
+                    AsyncStorage.setItem(key, JSON.stringify(newDeck));
+
+
+                    return AsyncStorage.getItem(key)
+                        .then(JSON.parse)
+                        .then((deck) => {
+
+                            return deck
+                        })
+                        .catch(() => {
+                            console.log('There was an error saving the deck ' + title);
+                            return false
+                        });
+                }
             }
-            else {
-                // 1. The title wil be the key in AsyncStorage
-                const key = titleCapitalize(title.trim().toLowerCase());
-                // 2. Array of cards it will have the decks
-                const questions = [];
-                // 3. Create the object deck
-                const newDeck = {
-                    title: key,
-                    questions
-                };
 
-
-                // We saved at AsyncStorage, if successful return true
-                AsyncStorage.setItem(key, JSON.stringify(newDeck));
-
-
-                return AsyncStorage.getItem(key)
-                    .then(JSON.parse)
-                    .then((deck) => {
-
-                        return deck
-                    })
-                    .catch(() => {
-                        console.log('There was an error saving the deck ' + title);
-                        return false
-                    });
-            }
         });
 
 
@@ -87,19 +91,25 @@ export async function getDeck(title) {
 
 export async function addCardToDeck(title, card) {
 
-    // card = {
-    //     question: ' question',
-    //     answer: ' answer'
-    // };
+
 
     return await AsyncStorage.getItem(title.trim().toLowerCase())
         .then(JSON.parse)
         .then((deck) => {
-            deck.questions.push(card);
-            return deck
+            console.log(card.question.length);
+            console.log(card.answer.length);
+            if (card.question.length <= 0 || card.answer.length <= 0) {
+                return false
+            }else{
+                deck.questions.push(card);
+                console.log(deck);
+                return deck
+            }
+
         })
         .catch(() => {
-            return 'Error adding the card ' + card + ' to the deck ' + title
+            console.log('Error adding the card ' + card + ' to the deck ' + title);
+            return false;
         });
 }
 

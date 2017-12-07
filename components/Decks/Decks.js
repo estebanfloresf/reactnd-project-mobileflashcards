@@ -8,7 +8,7 @@ import {
 
 } from 'react-native';
 import {white, colors} from "../../utils/styles";
-import {fetchDecks} from '../../actions/index';
+import {fetchDecks} from '../../actions/Decks';
 import {connect} from 'react-redux';
 import {components} from "../../utils/styles";
 
@@ -45,7 +45,7 @@ class Decks extends Component {
 
 
                                     <TouchableOpacity style={styles.cards}
-                                                      onPress={() => this.props.navigation.navigate('singleDeck', {title: item.title, key:index})}>
+                                                      onPress={() => this.props.navigation.navigate('singleDeck', {title: item.title})}>
 
                                         <View>
                                             <Text style={components.cardTitleText}>{item.title}</Text>
