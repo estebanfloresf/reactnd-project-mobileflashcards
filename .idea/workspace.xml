@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c2ef57a8-7d06-49e4-b9e0-12ceb73c3713" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App.js" afterPath="$PROJECT_DIR$/App.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/Cards/AddCard.js" afterPath="$PROJECT_DIR$/components/Cards/AddCard.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/Decks/addDeck.js" afterPath="$PROJECT_DIR$/components/Decks/addDeck.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/Decks/singleDeck.js" afterPath="$PROJECT_DIR$/components/Decks/singleDeck.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/utils/helpers.js" afterPath="$PROJECT_DIR$/utils/helpers.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -490,11 +485,18 @@
       <option name="project" value="LOCAL" />
       <updated>1512528656340</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Number of cards">
+      <created>1512613902726</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1512613902726</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="97650000" />
+    <option name="totallyTimeSpent" value="97668000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="728" extended-state="0" />
