@@ -22,7 +22,6 @@ class singleDeck extends Component {
 
 
         const {deck} = this.props;
-        console.log(deck[0].title);
 
         return (
             <View style={components.content}>
@@ -38,7 +37,7 @@ class singleDeck extends Component {
                                     <Text style={components.cardSubText}>{deck.questions.length + ' cards'}</Text>
                                 </View>
                                 <View style={components.buttonView}>
-                                    <TouchableOpacity style={components.button}>
+                                    <TouchableOpacity style={components.button} onPress={() => this.props.navigation.navigate('AddCard', {title: deck.title})}>
                                         <Text style={components.textButton}>Add Card</Text>
                                     </TouchableOpacity>
                                     <TouchableOpacity style={components.button}>

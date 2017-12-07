@@ -11,6 +11,7 @@ import { TabNavigator , StackNavigator} from 'react-navigation';
 import { FontAwesome, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'
 import AddDeck from './components/Decks/addDeck';
 import singleDeck  from  './components/Decks/singleDeck';
+import AddCard from './components/Cards/AddCard';
 
 
 
@@ -90,6 +91,19 @@ const MainNavigator = StackNavigator({
     },
     singleDeck:{
         screen: singleDeck,
+        navigationOptions:({ navigation }) => ({
+            title:  `${navigation.state.params.title}`,
+            headerTintColor:colors.secondary,
+            headerStyle: {
+                // fontSize: 14,
+                backgroundColor: colors.primary,
+            },
+
+        })
+
+    },
+    AddCard:{
+        screen: AddCard,
         navigationOptions:({ navigation }) => ({
             title:  `${navigation.state.params.title}`,
             headerTintColor:colors.secondary,

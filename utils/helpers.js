@@ -87,10 +87,10 @@ export async function getDeck(title) {
 
 export async function addCardToDeck(title, card) {
 
-    card = {
-        question: 'test question',
-        answer: 'test answer'
-    };
+    // card = {
+    //     question: ' question',
+    //     answer: ' answer'
+    // };
 
     return await AsyncStorage.getItem(title.trim().toLowerCase())
         .then(JSON.parse)
