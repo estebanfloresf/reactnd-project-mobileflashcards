@@ -1,5 +1,5 @@
 import {getDeck, addCardToDeck} from '../utils/helpers';
-
+import {fetchDecks} from './Decks';
 import {
     ADD_CARD_SUCCESS,
     ADD_CARD_FETCHING,
@@ -16,10 +16,10 @@ export function addCardData() {
     }
 }
 
-export function addCardSuccess(deckUpdated) {
+export function addCardSuccess(deck) {
     return {
         type: ADD_CARD_SUCCESS,
-        deckUpdated
+        payload: deck
     }
 }
 
@@ -41,11 +41,14 @@ export function addCard(title,card) {
                     if (deck === false) {
                         dispatch(addCardFail(true))
                     } else {
-                        console.log(deck);
-                        dispatch(addCardSuccess(deck))
+
+                        dispatch( addCardSuccess(deck));
+                        dispatch(fetchDecks());
+
                     }
                 }
             )
+
             .catch((error) => {
 
                     console.log('Error saving the card ' + error);

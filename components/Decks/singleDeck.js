@@ -13,10 +13,6 @@ import {
 
 class singleDeck extends Component {
 
-    state = {
-        title: this.props.navigation.state.params.title
-    };
-
 
     render() {
 
@@ -40,7 +36,7 @@ class singleDeck extends Component {
                                     <TouchableOpacity style={components.button} onPress={() => this.props.navigation.navigate('AddCard', {title: deck.title})}>
                                         <Text style={components.textButton}>Add Card</Text>
                                     </TouchableOpacity>
-                                    <TouchableOpacity style={components.button}>
+                                    <TouchableOpacity style={components.button} onPress={() => this.props.navigation.navigate('Quiz', {title: deck.title})}>
                                         <Text style={components.textButton}>Start Quiz</Text>
                                     </TouchableOpacity>
                                 </View>
@@ -70,5 +66,5 @@ function mapStateToProps(state, ownProps) {
 
 const mapDispatchToProps = {};
 
-const styles = StyleSheet.create({});
+
 export default connect(mapStateToProps, mapDispatchToProps)(singleDeck);

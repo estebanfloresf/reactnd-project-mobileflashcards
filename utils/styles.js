@@ -1,12 +1,14 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet,Dimensions} from 'react-native';
+const {width} = Dimensions.get('window');
 
 
 /* RGB */
 
 export const colors = {
+    success: '#0d741e',
     text: '#27476e',
     info: '#eca400',
-    warning: '#ec4e20',
+    warning: '#ec1f20',
     secondary: '#beebfc',
     primary: '#0b132b',
     white: '#fff',
@@ -30,7 +32,7 @@ export const components = StyleSheet.create({
         borderRadius: 5,
         justifyContent: 'center',
         alignItems: 'flex-start',
-        width: 300,
+        width: width-10,
         height: 150,
         margin: 5,
         padding: 3,
@@ -87,4 +89,20 @@ export const components = StyleSheet.create({
         justifyContent: 'flex-start',
 
     },
+    flipCard: {
+
+        paddingLeft: 10,
+        backfaceVisibility: 'hidden',
+    },
+    flipCardBack: {
+
+        position: "absolute",
+        paddingLeft: 10
+    },
+    flipText: {
+        width: 90,
+        fontSize: 20,
+        color: 'white',
+        fontWeight: 'bold',
+    }
 });

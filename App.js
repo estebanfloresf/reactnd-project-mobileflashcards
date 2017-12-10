@@ -12,6 +12,7 @@ import { FontAwesome, Ionicons, MaterialCommunityIcons } from '@expo/vector-icon
 import AddDeck from './components/Decks/addDeck';
 import singleDeck  from  './components/Decks/singleDeck';
 import AddCard from './components/Cards/AddCard';
+import Quiz from './components/Quiz/Quiz';
 
 
 
@@ -70,10 +71,10 @@ const MainNavigator = StackNavigator({
     Home: {
         screen: Tabs,
         navigationOptions:{
-            // title: 'Decks',
+            title: 'Decks',
             headerTintColor:colors.secondary,
             headerStyle: {
-                // fontSize: 14,
+
                 backgroundColor: colors.primary,
             },
         },
@@ -84,7 +85,7 @@ const MainNavigator = StackNavigator({
             title: 'Add Deck',
             headerTintColor:colors.secondary,
             headerStyle: {
-                // fontSize: 14,
+
                 backgroundColor: colors.primary,
             },
         }
@@ -95,7 +96,7 @@ const MainNavigator = StackNavigator({
             title:  `${navigation.state.params.title}`,
             headerTintColor:colors.secondary,
             headerStyle: {
-                // fontSize: 14,
+
                 backgroundColor: colors.primary,
             },
 
@@ -108,7 +109,20 @@ const MainNavigator = StackNavigator({
             title:  `${navigation.state.params.title}`,
             headerTintColor:colors.secondary,
             headerStyle: {
-                // fontSize: 14,
+
+                backgroundColor: colors.primary,
+            },
+
+        })
+
+    },
+    Quiz:{
+        screen: Quiz,
+        navigationOptions:({ navigation }) => ({
+            title:  `Quiz - ${navigation.state.params.title}`,
+            headerTintColor:colors.secondary,
+            headerStyle: {
+
                 backgroundColor: colors.primary,
             },
 

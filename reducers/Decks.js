@@ -53,6 +53,7 @@ export function decksReducer(state = initialState, action) {
                 ...state,
                 decks: [...state.decks,  action.newDeck],
                 addDeckFetching: false,
+                addDeckError: false,
                 addDeckSuccess: true,
             };
         case ADD_DECK_FAIL:
@@ -70,9 +71,10 @@ export function decksReducer(state = initialState, action) {
         case ADD_CARD_SUCCESS:
             return {
                 ...state,
-                decks: [...state.decks,  action.deckUpdated],
+                decks: [...state.decks,  ...action.payload],
                 addCardFetching: false,
-                addCardSuccessSuccess: true,
+                addCardError: false,
+                addCardSuccess: true,
             };
         case ADD_CARD_FAIL:
             return{

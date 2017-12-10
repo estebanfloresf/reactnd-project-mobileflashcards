@@ -78,6 +78,7 @@ export function saveDeckTitle(title) {
 
 export async function getDeck(title) {
     return await AsyncStorage.getItem(title.trim().toLowerCase())
+
         .then((deck) => {
 
             return deck
@@ -89,28 +90,26 @@ export async function getDeck(title) {
 }
 
 
-export async function addCardToDeck(title, card) {
+export function addCardToDeck(title, card) {
 
+    if (card.question.length <= 0 || card.answer.length <= 0) {
+        return false
+    } else {
 
+        return AsyncStorage.getItem(titleCapitalize(title))
+            .then(JSON.parse)
+            .then((deck) => {
 
-    return await AsyncStorage.getItem(title.trim().toLowerCase())
-        .then(JSON.parse)
-        .then((deck) => {
-            console.log(card.question.length);
-            console.log(card.answer.length);
-            if (card.question.length <= 0 || card.answer.length <= 0) {
-                return false
-            }else{
                 deck.questions.push(card);
-                console.log(deck);
-                return deck
-            }
 
-        })
-        .catch(() => {
-            console.log('Error adding the card ' + card + ' to the deck ' + title);
-            return false;
-        });
+                AsyncStorage.mergeItem(titleCapitalize(title), JSON.stringify(deck));
+                return deck
+            })
+            .catch(() => {
+                console.log('Error adding the card ' + card + ' to the deck ' + title);
+                return false;
+            });
+    }
 }
 
 

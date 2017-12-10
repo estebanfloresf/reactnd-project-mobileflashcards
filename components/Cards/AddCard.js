@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {addCard} from '../../actions/Cards';
-import {components,colors} from '../../utils/styles';
+import {addCard, addCardFail} from '../../actions/Cards';
+import {components, colors} from '../../utils/styles';
 import {
 
     View,
+    Alert,
     Text,
     TouchableOpacity,
     TouchableWithoutFeedback,
@@ -24,22 +25,23 @@ class AddCard extends Component {
         };
     }
 
-    _addCard = () =>{
+    _addCard = () => {
 
         const card = {
             question: this.state.question,
             answer: this.state.answer
         };
-        this.props.addCard(this.state.title,card);
+        this.props.addCard(this.state.title, card);
 
         this.setState({
             question: 'Question',
             answer: 'Answer',
         })
     };
+
     render() {
         const {question, answer} = this.state;
-        const {addCardFetching, addCardSuccess, addCardFail} = this.props;
+        const {fetching, success, failed} = this.props;
         return (
             <View style={components.content}>
                 <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
@@ -78,8 +80,8 @@ class AddCard extends Component {
                         </View>
                         <View style={components.messages}>
                             {
-                                addCardFetching ? <Text style={{textAlign: 'center'}}>Loading...</Text>
-                                    : addCardFail ?
+                                fetching ? <Text style={{textAlign: 'center'}}>Loading...</Text>
+                                    : failed ?
                                     Alert.alert(
                                         'Add Card Error',
                                         'That card is already in use or is an invalid',
@@ -90,12 +92,17 @@ class AddCard extends Component {
                                         ],
                                         {cancelable: false}
                                     )
-                                    : addCardSuccess && Alert.alert(
+                                    : success && Alert.alert(
                                     'Card Added',
                                     'Your card  has been added',
                                     [
 
-                                        {text: 'Awesome', onPress: () => this.props.addDeckFail(false)},
+                                        {
+                                            text: 'Awesome', onPress: () => {
+                                            this.props.addCardFail(false);
+                                            this.props.navigation.goBack()
+                                        }
+                                        },
 
                                     ],
                                     {cancelable: false}
@@ -119,15 +126,17 @@ function mapStateToProps(state) {
         // decks: state.decksReducer.decks,
         // deckFetching: state.decksReducer.deckFetching,
         // deckFail: state.decksReducer.deckFail,
-        addCardFetching : state.decksReducer.addCardFetching,
-        addCardSuccess : state.decksReducer.addCardSuccess,
-        addCardFail : state.decksReducer.addCardFail,
+        fetching: state.decksReducer.addCardFetching,
+        success: state.decksReducer.addCardSuccess,
+        failed: state.decksReducer.addCardFail,
     }
 }
 
 
 const mapDispatchToProps = {
-    addCard
+    addCard,
+
+    addCardFail
 };
 
-export default connect(mapStateToProps,mapDispatchToProps)( AddCard);
+export default connect(mapStateToProps, mapDispatchToProps)(AddCard);

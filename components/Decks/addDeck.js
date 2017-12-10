@@ -18,7 +18,7 @@ class AddDeck extends Component {
 
     render() {
         const {deckTitle} = this.state;
-        const {addDeckFetching, addDeckError, addDeckSuccess} = this.props;
+        const {deckFetching, deckError, deckSuccess} = this.props;
         return (
             <View style={components.content}>
                 <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
@@ -45,8 +45,8 @@ class AddDeck extends Component {
                         </View>
                         <View style={components.messages}>
                             {
-                                addDeckFetching ? <Text style={{textAlign: 'center'}}>Loading...</Text>
-                                    : addDeckError ?
+                                deckFetching ? <Text style={{textAlign: 'center'}}>Loading...</Text>
+                                    : deckError ?
                                     Alert.alert(
                                         'Add Deck Error',
                                         'That deck title is already in use or is an invalid title',
@@ -57,12 +57,17 @@ class AddDeck extends Component {
                                         ],
                                         {cancelable: false}
                                     )
-                                    : addDeckSuccess && Alert.alert(
+                                    : deckSuccess && Alert.alert(
                                     'Deck Added',
                                     'Your deck  has been added',
                                     [
 
-                                        {text: 'Awesome', onPress: () => this.props.addDeckFail(false)},
+                                        {
+                                            text: 'Awesome', onPress: () => {
+                                            this.props.addDeckFail(false);
+
+                                        }
+                                        },
 
                                     ],
                                     {cancelable: false}
@@ -80,15 +85,16 @@ class AddDeck extends Component {
 
 function mapStateToProps(state) {
     return {
-        addDeckSuccess: state.decksReducer.addDeckSuccess,
-        addDeckError: state.decksReducer.addDeckError,
-        addDeckFetching: state.decksReducer.addDeckFetching,
+        deckSuccess: state.decksReducer.addDeckSuccess,
+        deckError: state.decksReducer.addDeckError,
+        deckFetching: state.decksReducer.addDeckFetching,
     }
 }
 
 const mapDispatchToProps = {
     addDeck,
-    addDeckFail
+    addDeckFail,
+
 };
 
 export default connect(
