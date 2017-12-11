@@ -1,19 +1,22 @@
 import {StyleSheet,Dimensions} from 'react-native';
-const {width} = Dimensions.get('window');
+export const {width} = Dimensions.get('window');
 
 
 /* RGB */
 
 export const colors = {
-    success: '#0d741e',
-    text: '#27476e',
-    info: '#eca400',
-    warning: '#ec1f20',
-    secondary: '#beebfc',
-    primary: '#0b132b',
+    success: '#8DE788',
+    successText: '#068000',
+    text: '#0A2D94',
+    info: '#FFAE00',
+    warning: '#FE9598',
+    warningText: '#9C0004',
+    secondary: '#889CD6',
+    primary: '#092578',
     white: '#fff',
     gray: '#9c9c9c'
 };
+
 
 
 export const components = StyleSheet.create({
@@ -33,7 +36,7 @@ export const components = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'flex-start',
         width: width-10,
-        height: 150,
+        // height: width*1.6,
         margin: 5,
         padding: 3,
         marginTop: 50,
@@ -53,13 +56,13 @@ export const components = StyleSheet.create({
     },
 
     buttonView: {
-        flex: 2,
+        flex: 3,
     },
 
     button: {
         // flex: 1,
         padding: 2,
-        margin: 2,
+        margin: 5,
         backgroundColor: colors.primary,
         alignItems: 'center',
         borderRadius: 5,

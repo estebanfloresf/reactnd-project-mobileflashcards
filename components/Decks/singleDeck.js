@@ -19,6 +19,7 @@ class singleDeck extends Component {
 
         const {deck} = this.props;
 
+
         return (
             <View style={components.content}>
 
@@ -39,6 +40,7 @@ class singleDeck extends Component {
                                     <TouchableOpacity style={components.button} onPress={() => this.props.navigation.navigate('Quiz', {title: deck.title})}>
                                         <Text style={components.textButton}>Start Quiz</Text>
                                     </TouchableOpacity>
+
                                 </View>
 
 

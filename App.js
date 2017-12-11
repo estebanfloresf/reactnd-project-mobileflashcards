@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, View, StatusBar} from 'react-native';
+import {StyleSheet, View, StatusBar} from 'react-native';
 import {Constants} from 'expo';
 import Decks from './components/Decks/Decks';
 import {colors} from "./utils/styles";
@@ -13,6 +13,7 @@ import AddDeck from './components/Decks/addDeck';
 import singleDeck  from  './components/Decks/singleDeck';
 import AddCard from './components/Cards/AddCard';
 import Quiz from './components/Quiz/Quiz';
+import Results from './components/Quiz/Results';
 
 
 
@@ -56,7 +57,7 @@ const Tabs = TabNavigator({
 } , {
 
     tabBarOptions: {
-        activeTintColor: colors.secondary,
+        activeTintColor: colors.white,
         labelStyle: {
             fontSize: 14,
         },
@@ -72,7 +73,7 @@ const MainNavigator = StackNavigator({
         screen: Tabs,
         navigationOptions:{
             title: 'Decks',
-            headerTintColor:colors.secondary,
+            headerTintColor:colors.white,
             headerStyle: {
 
                 backgroundColor: colors.primary,
@@ -83,7 +84,7 @@ const MainNavigator = StackNavigator({
         screen: AddDeck,
         navigationOptions: {
             title: 'Add Deck',
-            headerTintColor:colors.secondary,
+            headerTintColor:colors.white,
             headerStyle: {
 
                 backgroundColor: colors.primary,
@@ -94,7 +95,7 @@ const MainNavigator = StackNavigator({
         screen: singleDeck,
         navigationOptions:({ navigation }) => ({
             title:  `${navigation.state.params.title}`,
-            headerTintColor:colors.secondary,
+            headerTintColor:colors.white,
             headerStyle: {
 
                 backgroundColor: colors.primary,
@@ -107,7 +108,7 @@ const MainNavigator = StackNavigator({
         screen: AddCard,
         navigationOptions:({ navigation }) => ({
             title:  `${navigation.state.params.title}`,
-            headerTintColor:colors.secondary,
+            headerTintColor:colors.white,
             headerStyle: {
 
                 backgroundColor: colors.primary,
@@ -120,7 +121,21 @@ const MainNavigator = StackNavigator({
         screen: Quiz,
         navigationOptions:({ navigation }) => ({
             title:  `Quiz - ${navigation.state.params.title}`,
-            headerTintColor:colors.secondary,
+            headerTintColor:colors.white,
+            headerStyle: {
+
+                backgroundColor: colors.primary,
+            },
+
+        })
+
+    },
+    Results:{
+        screen: Results,
+        navigationOptions:({ navigation }) => ({
+            title:  `Results - ${navigation.state.params.title}`,
+            headerTintColor:colors.white,
+            headerLeft: null,
             headerStyle: {
 
                 backgroundColor: colors.primary,
