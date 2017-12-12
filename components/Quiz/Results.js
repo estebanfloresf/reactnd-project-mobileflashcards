@@ -18,23 +18,16 @@ class Results extends Component {
     };
     resetQuiz = NavigationActions.reset({
 
-        index: 1,
+        index:2,
         actions: [
 
-
+            NavigationActions.navigate({ routeName: 'Home'}),
             NavigationActions.navigate({ routeName: 'singleDeck',params:{title:this.state.title}}),
             NavigationActions.navigate({ routeName: 'Quiz',params:{title:this.state.title}})
         ]
     });
-     singleDeck = NavigationActions.navigate({
-        routeName: 'Home',
-        actions: [
-
-
-            NavigationActions.navigate({ routeName: 'singleDeck',params:{title:this.state.title}}),
-            NavigationActions.navigate({ routeName: 'Quiz',params:{title:this.state.title}})
-            // NavigationActions.navigate({ routeName: 'singleDeck',params:{title:title}})
-        ]
+     singleDeck = NavigationActions.back({
+        key: 'Decks'
     });
 
     render() {
@@ -51,8 +44,8 @@ class Results extends Component {
                 <View style={components.buttonView}>
                     <TouchableOpacity style={components.button} onPress={() => {
                         // this.props.navigation.navigate('Quiz', {title: title});
-                        this.props.navigation.navigate('Home')
-                        // this.props.navigation.dispatch(this.resetQuiz)
+                        // this.props.navigation.navigate('singleDeck',{titl})
+                        this.props.navigation.dispatch(this.resetQuiz)
                     }}>
                         <Text style={components.textButton}>Restart Quiz</Text>
                     </TouchableOpacity>

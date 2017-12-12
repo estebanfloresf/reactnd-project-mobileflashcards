@@ -4,24 +4,23 @@ export function getDecks() {
 
     return AsyncStorage.getAllKeys()
         .then((decks) => {
-            const newArray = [];
+            const promises = [];
+
+            //const newArray = [];
             for (var i = 0; i < decks.length; i++) {
-
-                AsyncStorage.getItem(decks[i])
-                    .then(JSON.parse)
-                    .then((deck) => {
-                        newArray.push(deck);
-
-                    })
-                    .catch((error) => {
-                        console.log('There was an error getting the deck ' + error);
-                        return false
-                    });
-
+                promises.push(AsyncStorage.getItem(decks[i]));
             }
 
+            return Promise.all(promises)
+                .then(responses => {
+                    return responses.map(response => JSON.parse(response))
+                })
+                .catch((error) => {
+                    console.log('There was an error getting the deck ' + error);
+                    return false
+                });
 
-            return newArray
+            //return newArray
         })
         .catch(() => {
             return 'Error getting the Decks'

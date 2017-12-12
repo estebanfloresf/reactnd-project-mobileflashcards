@@ -104,7 +104,9 @@ class Quiz extends Component {
                 {rotateY: this.backInterpolate}
             ]
         };
-
+        if(decks[0].length){
+            return <View></View>;
+        }
         return (
 
 
