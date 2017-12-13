@@ -24,7 +24,7 @@ const initialState = {
 };
 
 export function decksReducer(state = initialState, action) {
-console.log('Este son los decks',action.decks);
+
     switch (action.type) {
         case GET_DECKS_FETCHING:
             return {

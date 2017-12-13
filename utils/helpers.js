@@ -2,11 +2,11 @@ import {AsyncStorage, Alert} from 'react-native'
 
 export function getDecks() {
 
+
     return AsyncStorage.getAllKeys()
         .then((decks) => {
             const promises = [];
 
-            //const newArray = [];
             for (var i = 0; i < decks.length; i++) {
                 promises.push(AsyncStorage.getItem(decks[i]));
             }
@@ -20,7 +20,7 @@ export function getDecks() {
                     return false
                 });
 
-            //return newArray
+
         })
         .catch(() => {
             return 'Error getting the Decks'
@@ -33,7 +33,7 @@ export function saveDeckTitle(title) {
     //Verify if the deck name already exists
     return AsyncStorage.getAllKeys()
         .then((decks) => {
-            let existDups = decks.filter((deck) => deck === title);
+            var existDups = decks.filter((deck) => deck === title);
             if (existDups.length > 0) {
 
                 return false
@@ -101,11 +101,12 @@ export function addCardToDeck(title, card) {
 
                 deck.questions.push(card);
 
+
                 AsyncStorage.mergeItem(titleCapitalize(title), JSON.stringify(deck));
                 return deck
             })
             .catch(() => {
-                console.log('Error adding the card ' + card + ' to the deck ' + title);
+                console.log('Error adding the card ' + JSON.stringify(card) + ' to the deck ' + title);
                 return false;
             });
     }

@@ -92,7 +92,7 @@ class Quiz extends Component {
 
 
         const {decks} = this.props;
-        console.log(decks);
+
         const len = decks[0].questions.length;
         const frontAnimatedStyle = {
             transform: [

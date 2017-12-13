@@ -26,8 +26,14 @@ class Results extends Component {
             NavigationActions.navigate({ routeName: 'Quiz',params:{title:this.state.title}})
         ]
     });
-     singleDeck = NavigationActions.back({
-        key: 'Decks'
+     resetDeck = NavigationActions.reset({
+         index:1,
+         actions: [
+
+             NavigationActions.navigate({ routeName: 'Home'}),
+             NavigationActions.navigate({ routeName: 'singleDeck',params:{title:this.state.title}}),
+
+         ]
     });
 
     render() {
@@ -43,16 +49,15 @@ class Results extends Component {
                 </View>
                 <View style={components.buttonView}>
                     <TouchableOpacity style={components.button} onPress={() => {
-                        // this.props.navigation.navigate('Quiz', {title: title});
-                        // this.props.navigation.navigate('singleDeck',{titl})
+
                         this.props.navigation.dispatch(this.resetQuiz)
                     }}>
                         <Text style={components.textButton}>Restart Quiz</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={components.button}
                                       onPress={() =>
-                                          this.props.navigation.navigate('Home')
-                                          // this.props.navigation.dispatch(this.singleDeck)
+                                          this.props.navigation.dispatch(this.resetDeck)
+
                                       }>
                         <Text style={components.textButton}>Back to Deck</Text>
                     </TouchableOpacity>

@@ -19,11 +19,7 @@ class Decks extends Component {
         decks: [],
         activeRowKey: null,
     };
-
-
-    // componentWillMount(){
-    //     this.props.fetchDecks();
-    // }
+    
 
     componentDidMount() {
         this.props.fetchDecks();
@@ -32,7 +28,7 @@ class Decks extends Component {
 
     render() {
         const {decks, deckFetching, deckFail} = this.props;
-        console.log(this.props.navigation);
+
         return (
             <View style={components.content}>
 
@@ -67,7 +63,8 @@ class Decks extends Component {
 
                                 }
                             />
-                            : decks.length < 0 && <Text>It looks you haven't add any decks yet =)</Text>
+                            : decks.length < 0 && 
+                            <Text>It looks you haven't add any decks yet 🤪</Text>
 
 
                 }
@@ -78,7 +75,7 @@ class Decks extends Component {
 }
 
 function mapStateToProps(state) {
-console.log(state.decksReducer.decks);
+
     return {
         decks: state.decksReducer.decks,
         deckFetching: state.decksReducer.deckFetching,

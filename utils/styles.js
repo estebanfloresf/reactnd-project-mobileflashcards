@@ -36,7 +36,6 @@ export const components = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'flex-start',
         width: width-10,
-        // height: width*1.6,
         margin: 5,
         padding: 3,
         marginTop: 50,
@@ -60,7 +59,7 @@ export const components = StyleSheet.create({
     },
 
     button: {
-        // flex: 1,
+
         padding: 2,
         margin: 5,
         backgroundColor: colors.primary,

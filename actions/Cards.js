@@ -51,7 +51,7 @@ export function addCard(title,card) {
 
             .catch((error) => {
 
-                    console.log('Error saving the card ' + error);
+                    console.log('Error saving the card ' + error.messages);
                     dispatch(addCardFail(true))
                 }
             )

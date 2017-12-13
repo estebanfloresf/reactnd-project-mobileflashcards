@@ -14,6 +14,7 @@ class AddDeck extends Component {
     _addDeck = () => {
         this.props.addDeck(this.state.deckTitle);
         this.setState({deckTitle: 'Your Deck Title'})
+
     };
 
     render() {
@@ -65,6 +66,7 @@ class AddDeck extends Component {
                                         {
                                             text: 'Awesome', onPress: () => {
                                             this.props.addDeckFail(false);
+                                            this.props.navigation.goBack();
 
                                         }
                                         },
