@@ -14,8 +14,7 @@ import singleDeck  from  './components/Decks/singleDeck';
 import AddCard from './components/Cards/addCard';
 import Quiz from './components/Quiz/Quiz';
 import Results from './components/Quiz/Results';
-
-
+import {setLocalNotification} from "./utils/helpers";
 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -149,7 +148,9 @@ function StatusBarCards({backgroundColor, ...props}) {
 
 export default class App extends React.Component {
 
-
+componentDidMount(){
+    setLocalNotification();
+}
     render() {
         return (
             <Provider store={store}>

@@ -6,16 +6,26 @@ import {
 
 } from 'react-native';
 import {components} from '../../utils/styles';
-import {NavigationActions} from 'react-navigation'
+import {NavigationActions} from 'react-navigation';
+import {clearLocalNotification,setLocalNotification} from "../../utils/helpers";
 
 
 class Results extends Component {
+
 
     state = {
         result: this.props.navigation.state.params.result,
         total: this.props.navigation.state.params.total,
         title: this.props.navigation.state.params.title,
     };
+
+
+    componentDidMount(){
+        clearLocalNotification()
+            .then(setLocalNotification)
+    }
+
+
     resetQuiz = NavigationActions.reset({
 
         index:2,

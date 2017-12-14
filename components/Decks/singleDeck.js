@@ -26,7 +26,7 @@ class singleDeck extends Component {
                 {
                     deck.map((deck) => {
                         return (
-                            <View key={deck.title} >
+                            <View key={deck.title}>
 
 
                                 <View style={components.card}>
@@ -34,10 +34,12 @@ class singleDeck extends Component {
                                     <Text style={components.cardSubText}>{deck.questions.length + ' cards'}</Text>
                                 </View>
                                 <View style={components.buttonView}>
-                                    <TouchableOpacity style={components.button} onPress={() => this.props.navigation.navigate('AddCard', {title: deck.title})}>
+                                    <TouchableOpacity style={components.button}
+                                                      onPress={() => this.props.navigation.navigate('AddCard', {title: deck.title})}>
                                         <Text style={components.textButton}>Add Card</Text>
                                     </TouchableOpacity>
-                                    <TouchableOpacity style={components.button} onPress={() => this.props.navigation.navigate('Quiz', {title: deck.title})}>
+                                    <TouchableOpacity style={components.button}
+                                                      onPress={() => this.props.navigation.navigate('Quiz', {title: deck.title})}>
                                         <Text style={components.textButton}>Start Quiz</Text>
                                     </TouchableOpacity>
 

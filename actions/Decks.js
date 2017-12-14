@@ -56,15 +56,13 @@ export function fetchDecks() {
     return (dispatch) => {
         dispatch(getDecksData());
         getDecks()
-
             .then((decks) => {
-
                     dispatch(getDecksSuccess(decks))
                 }
             )
             .catch((error) => {
 
-                    console.log('Error getting the decks ' + error);
+                    console.log('Error getting the decks ' + error.message);
                     dispatch(getDecksFail)
                 }
             )

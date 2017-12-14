@@ -18,7 +18,6 @@ export const colors = {
 };
 
 
-
 export const components = StyleSheet.create({
 
     content: {

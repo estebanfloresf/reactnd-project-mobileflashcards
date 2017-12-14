@@ -19,7 +19,7 @@ class Decks extends Component {
         decks: [],
         activeRowKey: null,
     };
-    
+
 
     componentDidMount() {
         this.props.fetchDecks();
@@ -29,6 +29,9 @@ class Decks extends Component {
     render() {
         const {decks, deckFetching, deckFail} = this.props;
 
+if(decks.length===0){
+    return <View></View>
+}
         return (
             <View style={components.content}>
 
@@ -44,9 +47,8 @@ class Decks extends Component {
                                 renderItem={({item, index}) =>
 
                                     < TouchableOpacity
-                                        style={[components.card,{height:width*0.6,margin:5,padding:2}]}
+                                        style={[components.card, {height: width * 0.6, margin: 5, padding: 2}]}
                                         onPress={() => this.props.navigation.navigate('singleDeck', {title: item.title})}>
-
 
                                         <View>
                                             <Text style={components.cardTitleText}>{item.title}</Text>
@@ -57,13 +59,12 @@ class Decks extends Component {
                                         </View>
 
 
-
                                     </TouchableOpacity>
 
 
                                 }
                             />
-                            : decks.length < 0 && 
+                            : decks.length < 0 &&
                             <Text>It looks you haven't add any decks yet 🤪</Text>
 
 
