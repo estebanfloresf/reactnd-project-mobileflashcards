@@ -29,9 +29,7 @@ class Decks extends Component {
     render() {
         const {decks, deckFetching, deckFail} = this.props;
 
-if(decks.length===0){
-    return <View></View>
-}
+
         return (
             <View style={components.content}>
 

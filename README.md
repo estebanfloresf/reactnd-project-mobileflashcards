@@ -17,7 +17,6 @@ To get started to review and/or run the project:
 
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
 
-Additional, the styles used for this project were from   [NativeBase.io ](https://nativebase.io/).
 
 ## Licensing
 
