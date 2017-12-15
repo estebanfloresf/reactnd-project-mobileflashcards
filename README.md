@@ -3,7 +3,7 @@
 This is the Udacity React Native Project that consists of  building a mobile application that allows users to study collections of flashcards. The app allows users to create different categories of flashcards called "decks", add flashcards to those decks, then take quizzes on those decks. 
 
 
-PS: This project will only run on iOS
+**This project will only run on iOS**
 
 ## Installation
 
