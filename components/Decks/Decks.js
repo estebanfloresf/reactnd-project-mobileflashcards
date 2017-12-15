@@ -48,22 +48,26 @@ class Decks extends Component {
                                 style={{width: width}}
                                 data={decks}
                                 keyExtractor={(item, index) => index}
-                                renderItem={({item, index}) =>
+                                renderItem={({item}) =>{
+                                    console.log(item);
+                                   return(
+                                       < TouchableOpacity
+                                           style={[components.card, {height: width * 0.6, margin: 5, padding: 2}]}
+                                           onPress={() => this.props.navigation.navigate('singleDeck', {title: item.title})}>
 
-                                    < TouchableOpacity
-                                        style={[components.card, {height: width * 0.6, margin: 5, padding: 2}]}
-                                        onPress={() => this.props.navigation.navigate('singleDeck', {title: item.title})}>
-
-                                        <View>
-                                            <Text style={components.cardTitleText}>{item.title}</Text>
-                                        </View>
-                                        <View>
-                                            <Text
-                                                style={components.cardSubText}>{item.questions.length + ' cards'}</Text>
-                                        </View>
+                                           <View>
+                                               <Text style={components.cardTitleText}>{item.title}</Text>
+                                           </View>
+                                           <View>
+                                               <Text
+                                                   style={components.cardSubText}>{item.questions.length + ' cards'}</Text>
+                                           </View>
 
 
-                                    </TouchableOpacity>
+                                       </TouchableOpacity>
+                                   )
+                                }
+
 
 
                                 }
@@ -78,7 +82,6 @@ class Decks extends Component {
 }
 
 function mapStateToProps(state) {
-
     return {
         decks: state.decksReducer.decks,
         deckFetching: state.decksReducer.deckFetching,

@@ -57,6 +57,7 @@ export function fetchDecks() {
         dispatch(getDecksData());
         getDecks()
             .then((decks) => {
+
                     dispatch(getDecksSuccess(decks))
                 }
             )

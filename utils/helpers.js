@@ -6,20 +6,20 @@ const NOTIFICATION_KEY = 'Flashcards:notifications';
 export function getDecks() {
 
     // AsyncStorage.getAllKeys().then(decks=> AsyncStorage.multiRemove(decks));
-    // AsyncStorage.getAllKeys().then(decks=> console.log(decks));
+
 
     return AsyncStorage.getAllKeys()
-        .then((decks) => {
-            const promises = [];
+        .then((keys) => {
+            const decks = [];
 
-            for (var i = 0; i < decks.length; i++) {
-                if (decks[i] !== 'Flashcards:notifications') {
+            for (var i = 0; i < keys.length; i++) {
+                if (keys[i] !== 'Flashcards:notifications') {
 
-                    promises.push(AsyncStorage.getItem(decks[i]));
+                    decks.push(AsyncStorage.getItem(keys[i]));
                 }
             }
 
-            return Promise.all(promises)
+            return Promise.all(decks)
                 .then(responses => {
 
                         return responses.map(response => JSON.parse(response))
