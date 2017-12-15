@@ -21,7 +21,7 @@ export function getDecks() {
 
             return Promise.all(promises)
                 .then(responses => {
-                    console.log(responses);
+
                         return responses.map(response => JSON.parse(response))
 
                 })
