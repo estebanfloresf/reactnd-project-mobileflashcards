@@ -14,16 +14,16 @@ export function getDecks() {
 
             for (var i = 0; i < decks.length; i++) {
                 if (decks[i] !== 'Flashcards:notifications') {
+
                     promises.push(AsyncStorage.getItem(decks[i]));
                 }
             }
 
             return Promise.all(promises)
                 .then(responses => {
-                    if (responses !== 'true') {
-
+                    console.log(responses);
                         return responses.map(response => JSON.parse(response))
-                    }
+
                 })
                 .catch((error) => {
                     console.log('There was an error getting the deck ' + error);

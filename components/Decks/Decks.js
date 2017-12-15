@@ -28,7 +28,13 @@ class Decks extends Component {
 
     render() {
         const {decks, deckFetching, deckFail} = this.props;
-
+        if (decks.length <= 0) {
+            return(
+                <View style={components.content}>
+                    <Text style={{color:colors.text}}>It looks you haven't add any decks yet 🤪</Text>
+                </View>
+            )
+        }
 
         return (
             <View style={components.content}>
@@ -37,7 +43,7 @@ class Decks extends Component {
                     deckFetching ? <Text style={{color: colors.info, fontSize: 50}}>Loading...</Text>
                         : deckFail ?
                         <Text style={{color: colors.warningText, fontSize: 50}}>Sorry we couldn't get your decks</Text>
-                        : decks ?
+                        : decks &&
                             <FlatList
                                 style={{width: width}}
                                 data={decks}
@@ -62,8 +68,6 @@ class Decks extends Component {
 
                                 }
                             />
-                            : decks.length < 0 &&
-                            <Text>It looks you haven't add any decks yet 🤪</Text>
 
 
                 }
