@@ -29,9 +29,9 @@ class Decks extends Component {
     render() {
         const {decks, deckFetching, deckFail} = this.props;
         if (decks.length <= 0) {
-            return(
+            return (
                 <View style={components.content}>
-                    <Text style={{color:colors.text}}>It looks you haven't add any decks yet 🤪</Text>
+                    <Text style={{color: colors.text}}>It looks you haven't add any decks yet 🤪</Text>
                 </View>
             )
         }
@@ -44,38 +44,32 @@ class Decks extends Component {
                         : deckFail ?
                         <Text style={{color: colors.warningText, fontSize: 50}}>Sorry we couldn't get your decks</Text>
                         : decks &&
-                            <FlatList
-                                style={{width: width}}
-                                data={decks}
-                                keyExtractor={(item, index) => index}
-                                renderItem={({item}) =>{
-                                    console.log(item);
-                                   return(
-                                       < TouchableOpacity
-                                           style={[components.card, {height: width * 0.6, margin: 5, padding: 2}]}
-                                           onPress={() => this.props.navigation.navigate('singleDeck', {title: item.title})}>
+                        <FlatList
+                            style={{width: width}}
+                            data={decks}
+                            keyExtractor={(item, index) => index}
+                            renderItem={({item}) => {
+                                if(item && item.questions){
+                                    return (
+                                        < TouchableOpacity
+                                            style={[components.card, {height: width * 0.6, margin: 5, padding: 2}]}
+                                            onPress={() => this.props.navigation.navigate('singleDeck', {title: item.title})}>
 
-                                           <View>
-                                               <Text style={components.cardTitleText}>{item.title}</Text>
-                                           </View>
-                                           <View>
-                                               <Text
-                                                   style={components.cardSubText}>{item.questions.length + ' cards'}</Text>
-                                           </View>
-
-
-                                       </TouchableOpacity>
-                                   )
+                                            <View>
+                                                <Text style={components.cardTitleText}>{item.title}</Text>
+                                            </View>
+                                            <View>
+                                                <Text
+                                                    style={components.cardSubText}>{item.questions.length + ' cards'}</Text>
+                                            </View>
+                                        </TouchableOpacity>
+                                    )
                                 }
 
-
-
-                                }
-                            />
-
-
+                            }
+                            }
+                        />
                 }
-
             </View>
         )
     }
