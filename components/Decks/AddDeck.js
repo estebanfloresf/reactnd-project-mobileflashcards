@@ -3,18 +3,33 @@ import {Alert, View, Text, TouchableOpacity, Keyboard, TextInput, TouchableWitho
 import {components, colors} from "../../utils/styles";
 import {connect} from 'react-redux';
 import {addDeck, addDeckFail} from '../../actions/Decks';
+import {NavigationActions} from 'react-navigation';
 
 
 class AddDeck extends Component {
     constructor(props) {
         super(props);
         this.state = {deckTitle: 'Your Deck Title'};
+        this._addDeck = this._addDeck.bind(this);
+        this._goToDeck = this._goToDeck.bind(this);
     }
 
     _addDeck = () => {
         this.props.addDeck(this.state.deckTitle);
-        this.setState({deckTitle: 'Your Deck Title'})
+    };
 
+    _goToDeck = () => {
+        this.props.navigation.dispatch(NavigationActions.reset({
+
+            index: 1,
+            actions: [
+
+                NavigationActions.navigate({routeName: 'Home'}),
+                NavigationActions.navigate({routeName: 'singleDeck', params: {title: this.state.deckTitle}}),
+
+            ]
+        }));
+        this.setState({deckTitle: 'Your Deck Title'})
     };
 
     render() {
@@ -66,7 +81,7 @@ class AddDeck extends Component {
                                         {
                                             text: 'Awesome', onPress: () => {
                                             this.props.addDeckFail(false);
-                                            this.props.navigation.goBack();
+                                            this._goToDeck();
 
                                         }
                                         },

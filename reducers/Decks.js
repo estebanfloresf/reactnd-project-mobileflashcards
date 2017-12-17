@@ -5,9 +5,7 @@ import {
     GET_DECKS_FAIL,
     GET_DECKS_SUCCESS,
     GET_DECKS_FETCHING,
-    ADD_CARD_FAIL,
-    ADD_CARD_FETCHING,
-    ADD_CARD_SUCCESS,
+
 } from "../actions/types";
 
 
@@ -62,26 +60,6 @@ export function decksReducer(state = initialState, action) {
                 addDeckFetching: false,
                 addDeckSuccess: false,
                 addDeckError: action.payload,
-            };
-        case ADD_CARD_FETCHING:
-            return{
-                ...state,
-                addDeckFetching: true,
-            };
-        case ADD_CARD_SUCCESS:
-            return {
-                ...state,
-                decks: [...state.decks,  ...action.payload],
-                addCardFetching: false,
-                addCardError: false,
-                addCardSuccess: true,
-            };
-        case ADD_CARD_FAIL:
-            return{
-                ...state,
-                addCardFetching: false,
-                addCardSuccess: false,
-                addCardError: action.payload,
             };
 
         default:

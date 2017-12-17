@@ -123,9 +123,9 @@ class AddCard extends Component {
 function mapStateToProps(state) {
 
     return {
-        fetching: state.decksReducer.addCardFetching,
-        success: state.decksReducer.addCardSuccess,
-        failed: state.decksReducer.addCardFail,
+        fetching: state.cardsReducer.addCardFetching,
+        success: state.cardsReducer.addCardSuccess,
+        failed: state.cardsReducer.addCardFail,
     }
 }
 

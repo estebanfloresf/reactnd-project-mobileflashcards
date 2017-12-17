@@ -1,12 +1,10 @@
-import {getDeck, addCardToDeck} from '../utils/helpers';
+import { addCardToDeck} from '../utils/helpers';
 import {fetchDecks} from './Decks';
 import {
     ADD_CARD_SUCCESS,
     ADD_CARD_FETCHING,
     ADD_CARD_FAIL,
-    GET_CARDS_FETCHING,
-    GET_CARDS_SUCCESS,
-    GET_CARDS_FAIL,
+
 } from './types';
 
 

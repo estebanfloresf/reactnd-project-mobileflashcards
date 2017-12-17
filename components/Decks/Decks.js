@@ -14,12 +14,6 @@ import {components, colors, width} from '../../utils/styles';
 
 class Decks extends Component {
 
-    state = {
-        text: 'Title Deck',
-        decks: [],
-        activeRowKey: null,
-    };
-
 
     componentDidMount() {
         this.props.fetchDecks();
