@@ -17,22 +17,22 @@
     "android": "react-native-scripts android",
     "ios": "react-native-scripts ios",
     "test": "node node_modules/jest/bin/jest.js --watch",
-    "snyk-protect": "snyk protect",
+    "snyk-protect": "snyk-protect",
     "prepare": "npm run snyk-protect"
   },
   "jest": {
     "preset": "jest-expo"
   },
   "dependencies": {
-    "expo": "^25.0.0",
-    "native-base": "^2.3.3",
-    "react": "16.2.0",
-    "react-native": "^0.57.0",
+    "expo": "^28.0.0",
+    "native-base": "^2.13.6",
+    "react": "16.5.0",
+    "react-native": "^0.64.0",
     "react-native-flip-card": "^3.5.2",
     "react-native-swipeout": "^2.3.1",
-    "react-navigation": "^1.0.0-beta.21",
+    "react-navigation": "^1.0.0",
     "react-redux": "^5.0.6",
-    "snyk": "^1.105.0"
+    "@snyk/protect": "latest"
   },
   "snyk": true
 }
